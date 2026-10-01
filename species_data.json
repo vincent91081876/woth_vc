@@ -1,0 +1,8647 @@
+{
+  "source": "https://toolbox.byteset.io/animals",
+  "animals": [
+    {
+      "slug": "alaska-moose",
+      "name": "Alaska moose",
+      "latin": "Alces americanus gigas",
+      "tier": 6,
+      "hit_energy_j": [
+        3426.0,
+        6032.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          96.0,
+          245.0
+        ],
+        [
+          246.0,
+          324.0
+        ],
+        [
+          325.0,
+          390.0
+        ],
+        [
+          391.0,
+          448.0
+        ],
+        [
+          449.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              200.0,
+              332.0
+            ],
+            "weight_text": "200 - 332 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              150.0,
+              218.0
+            ],
+            "weight_text": "150 - 218 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              332.0,
+              596.0
+            ],
+            "weight_text": "332 - 596 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              218.0,
+              354.0
+            ],
+            "weight_text": "218 - 354 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              16.0
+            ],
+            "weight": [
+              596.0,
+              860.0
+            ],
+            "weight_text": "596 - 860 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              16.0
+            ],
+            "weight": [
+              354.0,
+              490.0
+            ],
+            "weight_text": "354 - 490 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/alaska-moose",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "阿拉斯加駝鹿"
+    },
+    {
+      "slug": "american-badger",
+      "name": "American badger",
+      "latin": "Taxidea taxus",
+      "tier": 3,
+      "hit_energy_j": [
+        612.0,
+        1836.0
+      ],
+      "primary_habitat": [
+        "Lowland forest",
+        "Grasslands"
+      ],
+      "secondary_habitat": [
+        "Highland forest"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          212.0,
+          314.0
+        ],
+        [
+          315.0,
+          369.0
+        ],
+        [
+          370.0,
+          414.0
+        ],
+        [
+          415.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              4.0,
+              6.0
+            ],
+            "weight_text": "4 - 6 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              3.0,
+              4.0
+            ],
+            "weight_text": "3 - 4 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              6.0,
+              9.0
+            ],
+            "weight_text": "6 - 9 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              4.0,
+              6.0
+            ],
+            "weight_text": "4 - 6 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              10.0
+            ],
+            "weight": [
+              9.0,
+              12.0
+            ],
+            "weight_text": "9 - 12 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              10.0
+            ],
+            "weight": [
+              6.0,
+              8.0
+            ],
+            "weight_text": "6 - 8 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/american-badger",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley"
+      ],
+      "name_zh": "美洲獾"
+    },
+    {
+      "slug": "american-black-bear",
+      "name": "American black bear",
+      "latin": "Ursus americanus",
+      "tier": 6,
+      "hit_energy_j": [
+        2889.0,
+        4911.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          357.0,
+          409.0
+        ],
+        [
+          410.0,
+          437.0
+        ],
+        [
+          438.0,
+          457.0
+        ],
+        [
+          458.0,
+          477.0
+        ],
+        [
+          478.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              7.0
+            ],
+            "weight": [
+              57.0,
+              112.0
+            ],
+            "weight_text": "57 - 112 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              7.0
+            ],
+            "weight": [
+              41.0,
+              62.0
+            ],
+            "weight_text": "41 - 62 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              8.0,
+              15.0
+            ],
+            "weight": [
+              113.0,
+              187.0
+            ],
+            "weight_text": "113 - 187 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              15.0
+            ],
+            "weight": [
+              63.0,
+              90.0
+            ],
+            "weight_text": "63 - 90 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              39.0
+            ],
+            "weight": [
+              188.0,
+              400.0
+            ],
+            "weight_text": "188 - 400 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              39.0
+            ],
+            "weight": [
+              91.0,
+              170.0
+            ],
+            "weight_text": "91 - 170 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/american-black-bear",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Aurora Shores"
+      ],
+      "name_zh": "美洲黑熊"
+    },
+    {
+      "slug": "arctic-fox",
+      "name": "Arctic fox",
+      "latin": "Vulpes lagopus",
+      "tier": 3,
+      "hit_energy_j": [
+        580.0,
+        1720.0
+      ],
+      "primary_habitat": [
+        "Highlands"
+      ],
+      "secondary_habitat": [
+        "Highland forests and grasslands"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          389.0,
+          432.0
+        ],
+        [
+          433.0,
+          454.0
+        ],
+        [
+          455.0,
+          474.0
+        ],
+        [
+          475.0,
+          488.0
+        ],
+        [
+          489.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              9.0
+            ],
+            "weight": [
+              3.0,
+              4.0
+            ],
+            "weight_text": "3 - 4 kg"
+          },
+          "F": {
+            "age": [
+              7.0,
+              9.0
+            ],
+            "weight": [
+              3.0,
+              3.0
+            ],
+            "weight_text": "3 - 3 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/arctic-fox",
+      "life_cycle_profile": "PredatorSmall",
+      "schedule": [
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 12,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 21,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "北極狐"
+    },
+    {
+      "slug": "barren-ground-caribou",
+      "name": "Barren-ground caribou",
+      "latin": "Rangifer tarandus groenlandicus",
+      "tier": 5,
+      "hit_energy_j": [
+        1620.0,
+        3810.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          171.0,
+          304.0
+        ],
+        [
+          305.0,
+          374.0
+        ],
+        [
+          375.0,
+          422.0
+        ],
+        [
+          423.0,
+          467.0
+        ],
+        [
+          468.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              2.0,
+              3.0
+            ],
+            "weight": [
+              70.0,
+              110.0
+            ],
+            "weight_text": "70 - 110 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              65.0,
+              80.0
+            ],
+            "weight_text": "65 - 80 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              110.0,
+              130.0
+            ],
+            "weight_text": "110 - 130 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              80.0,
+              90.0
+            ],
+            "weight_text": "80 - 90 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              13.0
+            ],
+            "weight": [
+              130.0,
+              160.0
+            ],
+            "weight_text": "130 - 160 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              13.0
+            ],
+            "weight": [
+              90.0,
+              100.0
+            ],
+            "weight_text": "90 - 100 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/barren-ground-caribou",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "荒原馴鹿"
+    },
+    {
+      "slug": "bighorn-sheep",
+      "name": "Bighorn sheep",
+      "latin": "Ovis canadensis",
+      "tier": 5,
+      "hit_energy_j": [
+        1669.0,
+        3783.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          228.0,
+          335.0
+        ],
+        [
+          336.0,
+          389.0
+        ],
+        [
+          390.0,
+          431.0
+        ],
+        [
+          432.0,
+          472.0
+        ],
+        [
+          473.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              40.0,
+              85.0
+            ],
+            "weight_text": "40 - 85 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              30.0,
+              50.0
+            ],
+            "weight_text": "30 - 50 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              85.0,
+              120.0
+            ],
+            "weight_text": "85 - 120 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              50.0,
+              70.0
+            ],
+            "weight_text": "50 - 70 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              120.0,
+              150.0
+            ],
+            "weight_text": "120 - 150 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              70.0,
+              91.0
+            ],
+            "weight_text": "70 - 91 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/bighorn-sheep",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Elkcrest Island"
+      ],
+      "name_zh": "大角羊"
+    },
+    {
+      "slug": "black-wildebeest",
+      "name": "Black wildebeest",
+      "latin": "Connochaetes gnou",
+      "tier": 5,
+      "hit_energy_j": [
+        2332.0,
+        4026.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          267.0,
+          354.0
+        ],
+        [
+          355.0,
+          398.0
+        ],
+        [
+          399.0,
+          434.0
+        ],
+        [
+          435.0,
+          465.0
+        ],
+        [
+          466.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              120.0,
+              140.0
+            ],
+            "weight_text": "120 - 140 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              80.0,
+              110.0
+            ],
+            "weight_text": "80 - 110 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              10.0
+            ],
+            "weight": [
+              140.0,
+              165.0
+            ],
+            "weight_text": "140 - 165 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              10.0
+            ],
+            "weight": [
+              110.0,
+              120.0
+            ],
+            "weight_text": "110 - 120 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              11.0,
+              20.0
+            ],
+            "weight": [
+              165.0,
+              180.0
+            ],
+            "weight_text": "165 - 180 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              20.0
+            ],
+            "weight": [
+              120.0,
+              130.0
+            ],
+            "weight_text": "120 - 130 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/black-wildebeest",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "黑角馬"
+    },
+    {
+      "slug": "blue-wildebeest",
+      "name": "Blue wildebeest",
+      "latin": "Connochaetes taurinus",
+      "tier": 6,
+      "hit_energy_j": [
+        2720.0,
+        4712.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          292.0,
+          369.0
+        ],
+        [
+          370.0,
+          409.0
+        ],
+        [
+          410.0,
+          440.0
+        ],
+        [
+          441.0,
+          469.0
+        ],
+        [
+          470.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              120.0,
+              165.0
+            ],
+            "weight_text": "120 - 165 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              115.0,
+              145.0
+            ],
+            "weight_text": "115 - 145 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              10.0
+            ],
+            "weight": [
+              165.0,
+              250.0
+            ],
+            "weight_text": "165 - 250 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              10.0
+            ],
+            "weight": [
+              145.0,
+              235.0
+            ],
+            "weight_text": "145 - 235 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              11.0,
+              20.0
+            ],
+            "weight": [
+              250.0,
+              290.0
+            ],
+            "weight_text": "250 - 290 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              20.0
+            ],
+            "weight": [
+              235.0,
+              260.0
+            ],
+            "weight_text": "235 - 260 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/blue-wildebeest",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "藍角馬"
+    },
+    {
+      "slug": "brown-bear",
+      "name": "Brown bear",
+      "latin": "Ursus arctos",
+      "tier": 6,
+      "hit_energy_j": [
+        2835.0,
+        5386.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          280.0,
+          361.0
+        ],
+        [
+          362.0,
+          404.0
+        ],
+        [
+          405.0,
+          434.0
+        ],
+        [
+          435.0,
+          466.0
+        ],
+        [
+          467.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              60.0,
+              170.0
+            ],
+            "weight_text": "60 - 170 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              50.0,
+              100.0
+            ],
+            "weight_text": "50 - 100 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              170.0,
+              300.0
+            ],
+            "weight_text": "170 - 300 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              100.0,
+              150.0
+            ],
+            "weight_text": "100 - 150 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              27.0
+            ],
+            "weight": [
+              300.0,
+              400.0
+            ],
+            "weight_text": "300 - 400 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              27.0
+            ],
+            "weight": [
+              150.0,
+              205.0
+            ],
+            "weight_text": "150 - 205 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/brown-bear",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "棕熊"
+    },
+    {
+      "slug": "cape-buffalo",
+      "name": "Cape buffalo",
+      "latin": "Syncerus caffer",
+      "tier": 6,
+      "hit_energy_j": [
+        4486.0,
+        6523.0
+      ],
+      "primary_habitat": [
+        "Highlands",
+        "Savanna"
+      ],
+      "secondary_habitat": [
+        "Grasslands and forests"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          280.0,
+          362.0
+        ],
+        [
+          363.0,
+          405.0
+        ],
+        [
+          406.0,
+          437.0
+        ],
+        [
+          438.0,
+          469.0
+        ],
+        [
+          470.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              250.0,
+              450.0
+            ],
+            "weight_text": "250 - 450 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              199.0,
+              300.0
+            ],
+            "weight_text": "199 - 300 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              12.0
+            ],
+            "weight": [
+              450.0,
+              870.0
+            ],
+            "weight_text": "450 - 870 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              12.0
+            ],
+            "weight": [
+              300.0,
+              450.0
+            ],
+            "weight_text": "300 - 450 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              13.0,
+              25.0
+            ],
+            "weight": [
+              870.0,
+              997.0
+            ],
+            "weight_text": "870 - 997 kg"
+          },
+          "F": {
+            "age": [
+              13.0,
+              25.0
+            ],
+            "weight": [
+              450.0,
+              500.0
+            ],
+            "weight_text": "450 - 500 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/cape-buffalo",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "非洲水牛"
+    },
+    {
+      "slug": "chamois",
+      "name": "Chamois",
+      "latin": "Rupicapra rupicapra",
+      "tier": 5,
+      "hit_energy_j": [
+        1323.0,
+        3439.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          263.0,
+          354.0
+        ],
+        [
+          355.0,
+          399.0
+        ],
+        [
+          400.0,
+          436.0
+        ],
+        [
+          437.0,
+          464.0
+        ],
+        [
+          465.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              30.0
+            ],
+            "weight_text": "20 - 30 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              30.0
+            ],
+            "weight_text": "20 - 30 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              30.0,
+              45.0
+            ],
+            "weight_text": "30 - 45 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              30.0,
+              40.0
+            ],
+            "weight_text": "30 - 40 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              12.0,
+              19.0
+            ],
+            "weight": [
+              45.0,
+              60.0
+            ],
+            "weight_text": "45 - 60 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              19.0
+            ],
+            "weight": [
+              40.0,
+              47.0
+            ],
+            "weight_text": "40 - 47 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/chamois",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Matariki Park"
+      ],
+      "name_zh": "岩羚羊"
+    },
+    {
+      "slug": "common-eland",
+      "name": "Common eland",
+      "latin": "Taurotragus oryx",
+      "tier": 6,
+      "hit_energy_j": [
+        3450.0,
+        6215.0
+      ],
+      "primary_habitat": [
+        "Grasslands and forests",
+        "Savanna"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          91.0,
+          244.0
+        ],
+        [
+          245.0,
+          322.0
+        ],
+        [
+          323.0,
+          384.0
+        ],
+        [
+          385.0,
+          439.0
+        ],
+        [
+          440.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              400.0,
+              599.0
+            ],
+            "weight_text": "400 - 599 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              300.0,
+              399.0
+            ],
+            "weight_text": "300 - 399 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              600.0,
+              799.0
+            ],
+            "weight_text": "600 - 799 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              400.0,
+              599.0
+            ],
+            "weight_text": "400 - 599 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              20.0
+            ],
+            "weight": [
+              800.0,
+              1000.0
+            ],
+            "weight_text": "800 - 1,000 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              20.0
+            ],
+            "weight": [
+              600.0,
+              800.0
+            ],
+            "weight_text": "600 - 800 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/common-eland",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "非洲大羚羊"
+    },
+    {
+      "slug": "common-warthog",
+      "name": "Common warthog",
+      "latin": "Phacochoerus africanus",
+      "tier": 5,
+      "hit_energy_j": [
+        2325.0,
+        3900.0
+      ],
+      "primary_habitat": [
+        "Grasslands and forests"
+      ],
+      "secondary_habitat": [
+        "Savanna"
+      ],
+      "trophy_type": "Tusks",
+      "trophy_ranges": [
+        [
+          111.0,
+          260.0
+        ],
+        [
+          261.0,
+          334.0
+        ],
+        [
+          335.0,
+          390.0
+        ],
+        [
+          391.0,
+          440.0
+        ],
+        [
+          441.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              60.0
+            ],
+            "weight_text": "20 - 60 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              15.0,
+              35.0
+            ],
+            "weight_text": "15 - 35 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              60.0,
+              130.0
+            ],
+            "weight_text": "60 - 130 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              35.0,
+              65.0
+            ],
+            "weight_text": "35 - 65 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              18.0
+            ],
+            "weight": [
+              130.0,
+              160.0
+            ],
+            "weight_text": "130 - 160 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              18.0
+            ],
+            "weight": [
+              65.0,
+              85.0
+            ],
+            "weight_text": "65 - 85 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/common-warthog",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "疣豬"
+    },
+    {
+      "slug": "egyptian-goose",
+      "name": "Egyptian goose",
+      "latin": "Alopochen aegyptiaca",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        275.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          199.0,
+          311.0
+        ],
+        [
+          312.0,
+          369.0
+        ],
+        [
+          370.0,
+          414.0
+        ],
+        [
+          415.0,
+          455.0
+        ],
+        [
+          456.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              8.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              8.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              20.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              20.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/egyptian-goose",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "埃及雁"
+    },
+    {
+      "slug": "eurasian-badger",
+      "name": "Eurasian badger",
+      "latin": "Meles meles",
+      "tier": 3,
+      "hit_energy_j": [
+        700.0,
+        2100.0
+      ],
+      "primary_habitat": [
+        "Highland forest"
+      ],
+      "secondary_habitat": [
+        "Lowland forest"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          274.0,
+          361.0
+        ],
+        [
+          362.0,
+          403.0
+        ],
+        [
+          404.0,
+          434.0
+        ],
+        [
+          435.0,
+          466.0
+        ],
+        [
+          467.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              5.0,
+              9.0
+            ],
+            "weight_text": "5 - 9 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              9.0,
+              12.0
+            ],
+            "weight_text": "9 - 12 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              5.0,
+              10.0
+            ],
+            "weight_text": "5 - 10 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              12.0,
+              17.0
+            ],
+            "weight_text": "12 - 17 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              10.0,
+              14.0
+            ],
+            "weight_text": "10 - 14 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/eurasian-badger",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "歐亞獾"
+    },
+    {
+      "slug": "eurasian-moose",
+      "name": "Eurasian moose",
+      "latin": "Alces alces alces",
+      "tier": 6,
+      "hit_energy_j": [
+        3005.0,
+        5795.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          111.0,
+          258.0
+        ],
+        [
+          259.0,
+          331.0
+        ],
+        [
+          332.0,
+          387.0
+        ],
+        [
+          388.0,
+          443.0
+        ],
+        [
+          444.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              140.0,
+              210.0
+            ],
+            "weight_text": "140 - 210 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              120.0,
+              160.0
+            ],
+            "weight_text": "120 - 160 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              210.0,
+              310.0
+            ],
+            "weight_text": "210 - 310 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              10.0
+            ],
+            "weight": [
+              160.0,
+              210.0
+            ],
+            "weight_text": "160 - 210 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              310.0,
+              580.0
+            ],
+            "weight_text": "310 - 580 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              15.0
+            ],
+            "weight": [
+              210.0,
+              430.0
+            ],
+            "weight_text": "210 - 430 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/eurasian-moose",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "歐亞駝鹿"
+    },
+    {
+      "slug": "eurasian-wolverine",
+      "name": "Eurasian wolverine",
+      "latin": "Gulo gulo gulo",
+      "tier": 3,
+      "hit_energy_j": [
+        783.0,
+        2327.0
+      ],
+      "primary_habitat": [
+        "Lowland forests"
+      ],
+      "secondary_habitat": [
+        "Swamps"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          363.0,
+          414.0
+        ],
+        [
+          415.0,
+          442.0
+        ],
+        [
+          443.0,
+          463.0
+        ],
+        [
+          464.0,
+          483.0
+        ],
+        [
+          484.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              2.0,
+              5.0
+            ],
+            "weight_text": "2 - 5 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              2.0,
+              4.0
+            ],
+            "weight_text": "2 - 4 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              2.0,
+              13.0
+            ],
+            "weight_text": "2 - 13 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              4.0,
+              12.0
+            ],
+            "weight_text": "4 - 12 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              12.0,
+              17.0
+            ],
+            "weight": [
+              3.0,
+              18.0
+            ],
+            "weight_text": "3 - 18 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              18.0
+            ],
+            "weight": [
+              12.0,
+              17.0
+            ],
+            "weight_text": "12 - 17 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/eurasian-wolverine",
+      "life_cycle_profile": "SmallGameNocturnal",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 8,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 18,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "狼獾"
+    },
+    {
+      "slug": "european-hare",
+      "name": "European hare",
+      "latin": "Lepus europaeus",
+      "tier": 1,
+      "hit_energy_j": [
+        356.0,
+        1068.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          80.0,
+          236.0
+        ],
+        [
+          237.0,
+          330.0
+        ],
+        [
+          331.0,
+          393.0
+        ],
+        [
+          394.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              3.0
+            ],
+            "weight_text": "1 - 3 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              3.0
+            ],
+            "weight_text": "1 - 3 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              5.0,
+              7.0
+            ],
+            "weight_text": "5 - 7 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              5.0,
+              7.0
+            ],
+            "weight_text": "5 - 7 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/european-hare",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Matariki Park",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "歐洲野兔"
+    },
+    {
+      "slug": "european-rabbit",
+      "name": "European rabbit",
+      "latin": "Oryctolagus cuniculus",
+      "tier": 1,
+      "hit_energy_j": [
+        86.0,
+        820.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          107.0,
+          259.0
+        ],
+        [
+          260.0,
+          339.0
+        ],
+        [
+          340.0,
+          399.0
+        ],
+        [
+          400.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/european-rabbit",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Matariki Park",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "歐洲兔"
+    },
+    {
+      "slug": "fallow-deer",
+      "name": "Fallow deer",
+      "latin": "Dama dama",
+      "tier": 5,
+      "hit_energy_j": [
+        1462.0,
+        3510.0
+      ],
+      "primary_habitat": [
+        "Lowland forest",
+        "Highland forests and grasslands"
+      ],
+      "secondary_habitat": [
+        "Grasslands"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          131.0,
+          284.0
+        ],
+        [
+          285.0,
+          356.0
+        ],
+        [
+          357.0,
+          408.0
+        ],
+        [
+          409.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              50.0,
+              80.0
+            ],
+            "weight_text": "50 - 80 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              25.0,
+              40.0
+            ],
+            "weight_text": "25 - 40 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              80.0,
+              110.0
+            ],
+            "weight_text": "80 - 110 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              40.0,
+              55.0
+            ],
+            "weight_text": "40 - 55 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              12.0
+            ],
+            "weight": [
+              110.0,
+              150.0
+            ],
+            "weight_text": "110 - 150 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              16.0
+            ],
+            "weight": [
+              55.0,
+              70.0
+            ],
+            "weight_text": "55 - 70 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/fallow-deer",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Matariki Park",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "黇鹿"
+    },
+    {
+      "slug": "feral-goat",
+      "name": "Feral goat",
+      "latin": "Capra hircus",
+      "tier": 5,
+      "hit_energy_j": [
+        1305.0,
+        3368.0
+      ],
+      "primary_habitat": [
+        "Mountains"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          180.0,
+          306.0
+        ],
+        [
+          307.0,
+          370.0
+        ],
+        [
+          371.0,
+          413.0
+        ],
+        [
+          414.0,
+          456.0
+        ],
+        [
+          457.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              29.0,
+              43.0
+            ],
+            "weight_text": "29 - 43 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              25.0,
+              40.0
+            ],
+            "weight_text": "25 - 40 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              43.0,
+              66.0
+            ],
+            "weight_text": "43 - 66 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              8.0
+            ],
+            "weight": [
+              40.0,
+              61.0
+            ],
+            "weight_text": "40 - 61 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              15.0
+            ],
+            "weight": [
+              66.0,
+              76.0
+            ],
+            "weight_text": "66 - 76 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              15.0
+            ],
+            "weight": [
+              61.0,
+              70.0
+            ],
+            "weight_text": "61 - 70 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/feral-goat",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "野山羊"
+    },
+    {
+      "slug": "feral-pig",
+      "name": "Feral pig",
+      "latin": "Sus scrofa",
+      "tier": 5,
+      "hit_energy_j": [
+        1581.0,
+        3871.0
+      ],
+      "primary_habitat": [
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Grasslands"
+      ],
+      "trophy_type": "Tusks",
+      "trophy_ranges": [
+        [
+          176.0,
+          298.0
+        ],
+        [
+          299.0,
+          359.0
+        ],
+        [
+          360.0,
+          406.0
+        ],
+        [
+          407.0,
+          452.0
+        ],
+        [
+          453.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              60.0
+            ],
+            "weight_text": "20 - 60 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              45.0
+            ],
+            "weight_text": "20 - 45 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              60.0,
+              110.0
+            ],
+            "weight_text": "60 - 110 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              45.0,
+              85.0
+            ],
+            "weight_text": "45 - 85 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              110.0,
+              200.0
+            ],
+            "weight_text": "110 - 200 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              85.0,
+              175.0
+            ],
+            "weight_text": "85 - 175 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/feral-pig",
+      "life_cycle_profile": "BigGameNocturnal",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 7,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Drink"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "野化豬"
+    },
+    {
+      "slug": "gemsbok",
+      "name": "Gemsbok",
+      "latin": "Oryx gazella",
+      "tier": 6,
+      "hit_energy_j": [
+        3050.0,
+        5132.0
+      ],
+      "primary_habitat": [
+        "Arid savanna and desert"
+      ],
+      "secondary_habitat": [
+        "Highlands",
+        "Savanna"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          210.0,
+          318.0
+        ],
+        [
+          319.0,
+          374.0
+        ],
+        [
+          375.0,
+          417.0
+        ],
+        [
+          418.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              110.0,
+              160.0
+            ],
+            "weight_text": "110 - 160 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              100.0,
+              120.0
+            ],
+            "weight_text": "100 - 120 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              160.0,
+              220.0
+            ],
+            "weight_text": "160 - 220 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              120.0,
+              180.0
+            ],
+            "weight_text": "120 - 180 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              20.0
+            ],
+            "weight": [
+              220.0,
+              240.0
+            ],
+            "weight_text": "220 - 240 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              20.0
+            ],
+            "weight": [
+              180.0,
+              210.0
+            ],
+            "weight_text": "180 - 210 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/gemsbok",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "南非劍羚"
+    },
+    {
+      "slug": "golden-jackal",
+      "name": "Golden jackal",
+      "latin": "Canis aureus",
+      "tier": 4,
+      "hit_energy_j": [
+        350.0,
+        2100.0
+      ],
+      "primary_habitat": [
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Grasslands"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          360.0,
+          414.0
+        ],
+        [
+          415.0,
+          442.0
+        ],
+        [
+          443.0,
+          464.0
+        ],
+        [
+          465.0,
+          482.0
+        ],
+        [
+          483.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              5.0,
+              8.0
+            ],
+            "weight_text": "5 - 8 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              5.0,
+              7.0
+            ],
+            "weight_text": "5 - 7 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              8.0,
+              11.0
+            ],
+            "weight_text": "8 - 11 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              7.0,
+              9.0
+            ],
+            "weight_text": "7 - 9 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              11.0,
+              15.0
+            ],
+            "weight_text": "11 - 15 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              9.0,
+              11.0
+            ],
+            "weight_text": "9 - 11 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/golden-jackal",
+      "life_cycle_profile": "PredatorSmall",
+      "schedule": [
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 12,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 21,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Transylvania"
+      ],
+      "name_zh": "金豺"
+    },
+    {
+      "slug": "gray-wolf",
+      "name": "Gray wolf",
+      "latin": "Canis lupus",
+      "tier": 5,
+      "hit_energy_j": [
+        1165.0,
+        3029.0
+      ],
+      "primary_habitat": [
+        "Highland forest",
+        "Lowland forest",
+        "Highlands (Finland)"
+      ],
+      "secondary_habitat": [
+        "Mountains",
+        "Lowland forests (Finland)"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          336.0,
+          399.0
+        ],
+        [
+          400.0,
+          435.0
+        ],
+        [
+          436.0,
+          460.0
+        ],
+        [
+          461.0,
+          482.0
+        ],
+        [
+          483.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              27.0
+            ],
+            "weight_text": "20 - 27 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              18.0,
+              25.0
+            ],
+            "weight_text": "18 - 25 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              27.0,
+              35.0
+            ],
+            "weight_text": "27 - 35 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              25.0,
+              32.0
+            ],
+            "weight_text": "25 - 32 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              13.0
+            ],
+            "weight": [
+              35.0,
+              42.0
+            ],
+            "weight_text": "35 - 42 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              13.0
+            ],
+            "weight": [
+              32.0,
+              39.0
+            ],
+            "weight_text": "32 - 39 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/gray-wolf",
+      "life_cycle_profile": "PredatorMedium",
+      "schedule": [
+        {
+          "time": 1,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 8,
+          "activity": "Sleep"
+        },
+        {
+          "time": 13,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Drink"
+        },
+        {
+          "time": 22,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Transylvania",
+        "Aurora Shores",
+        "Lintukoto Reserve",
+        "Elkcrest Island"
+      ],
+      "name_zh": "灰狼"
+    },
+    {
+      "slug": "greater-kudu",
+      "name": "Greater kudu",
+      "latin": "Tragelaphus strepsiceros",
+      "tier": 6,
+      "hit_energy_j": [
+        2712.0,
+        4101.0
+      ],
+      "primary_habitat": [
+        "Grasslands and forests",
+        "Savanna"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          220.0,
+          329.0
+        ],
+        [
+          330.0,
+          389.0
+        ],
+        [
+          390.0,
+          439.0
+        ],
+        [
+          440.0,
+          471.0
+        ],
+        [
+          472.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              140.0,
+              190.0
+            ],
+            "weight_text": "140 - 190 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              80.0,
+              120.0
+            ],
+            "weight_text": "80 - 120 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              190.0,
+              270.0
+            ],
+            "weight_text": "190 - 270 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              120.0,
+              165.0
+            ],
+            "weight_text": "120 - 165 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              270.0,
+              315.0
+            ],
+            "weight_text": "270 - 315 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              165.0,
+              230.0
+            ],
+            "weight_text": "165 - 230 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/greater-kudu",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "大扭角林羚"
+    },
+    {
+      "slug": "greylag-goose",
+      "name": "Greylag goose",
+      "latin": "Anser anser",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        681.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          164.0,
+          294.0
+        ],
+        [
+          295.0,
+          357.0
+        ],
+        [
+          358.0,
+          406.0
+        ],
+        [
+          407.0,
+          449.0
+        ],
+        [
+          450.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              25.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              25.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/greylag-goose",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Matariki Park",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "灰雁"
+    },
+    {
+      "slug": "helmeted-guineafowl",
+      "name": "Helmeted guineafowl",
+      "latin": "Numida meleagris",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        255.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          190.0,
+          312.0
+        ],
+        [
+          313.0,
+          374.0
+        ],
+        [
+          375.0,
+          421.0
+        ],
+        [
+          422.0,
+          468.0
+        ],
+        [
+          469.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              6.0,
+              12.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              12.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/helmeted-guineafowl",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains",
+        "Matariki Park"
+      ],
+      "name_zh": "珠雞"
+    },
+    {
+      "slug": "himalayan-tahr",
+      "name": "Himalayan tahr",
+      "latin": "Hemitragus jemlahicus",
+      "tier": 5,
+      "hit_energy_j": [
+        1492.0,
+        3386.0
+      ],
+      "primary_habitat": [
+        "Mountains"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          205.0,
+          317.0
+        ],
+        [
+          318.0,
+          372.0
+        ],
+        [
+          373.0,
+          414.0
+        ],
+        [
+          415.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              48.0,
+              65.0
+            ],
+            "weight_text": "48 - 65 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              39.0,
+              53.0
+            ],
+            "weight_text": "39 - 53 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              65.0,
+              80.0
+            ],
+            "weight_text": "65 - 80 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              9.0
+            ],
+            "weight": [
+              53.0,
+              69.0
+            ],
+            "weight_text": "53 - 69 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              80.0,
+              94.0
+            ],
+            "weight_text": "80 - 94 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              15.0
+            ],
+            "weight": [
+              69.0,
+              84.0
+            ],
+            "weight_text": "69 - 84 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/himalayan-tahr",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "喜馬拉雅塔爾羊"
+    },
+    {
+      "slug": "honey-badger",
+      "name": "Honey badger",
+      "latin": "Mellivora capensis",
+      "tier": 3,
+      "hit_energy_j": [
+        725.0,
+        1950.0
+      ],
+      "primary_habitat": [
+        "Savanna"
+      ],
+      "secondary_habitat": [
+        "Arid savanna and desert",
+        "Highlands"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          379.0,
+          421.0
+        ],
+        [
+          422.0,
+          450.0
+        ],
+        [
+          451.0,
+          473.0
+        ],
+        [
+          474.0,
+          487.0
+        ],
+        [
+          488.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              4.0,
+              6.0
+            ],
+            "weight_text": "4 - 6 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              2.0,
+              4.0
+            ],
+            "weight_text": "2 - 4 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              6.0,
+              10.0
+            ],
+            "weight_text": "6 - 10 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              4.0,
+              8.0
+            ],
+            "weight_text": "4 - 8 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              10.0,
+              12.0
+            ],
+            "weight_text": "10 - 12 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              8.0
+            ],
+            "weight": [
+              8.0,
+              10.0
+            ],
+            "weight_text": "8 - 10 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/honey-badger",
+      "life_cycle_profile": "SmallGameNocturnal",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 8,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 18,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "蜜獾"
+    },
+    {
+      "slug": "kodiak-bear",
+      "name": "Kodiak bear",
+      "latin": "Ursus arctos middendorffi",
+      "tier": 6,
+      "hit_energy_j": [
+        3855.0,
+        6233.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          246.0,
+          339.0
+        ],
+        [
+          340.0,
+          389.0
+        ],
+        [
+          390.0,
+          425.0
+        ],
+        [
+          426.0,
+          461.0
+        ],
+        [
+          462.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              60.0,
+              250.0
+            ],
+            "weight_text": "60 - 250 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              5.0
+            ],
+            "weight": [
+              50.0,
+              120.0
+            ],
+            "weight_text": "50 - 120 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              250.0,
+              530.0
+            ],
+            "weight_text": "250 - 530 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              15.0
+            ],
+            "weight": [
+              120.0,
+              180.0
+            ],
+            "weight_text": "120 - 180 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              27.0
+            ],
+            "weight": [
+              530.0,
+              760.0
+            ],
+            "weight_text": "530 - 760 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              27.0
+            ],
+            "weight": [
+              180.0,
+              350.0
+            ],
+            "weight_text": "180 - 350 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/kodiak-bear",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "科迪亞克棕熊"
+    },
+    {
+      "slug": "lesser-scaup",
+      "name": "Lesser scaup",
+      "latin": "Aythya affinis",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        174.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          210.0,
+          318.0
+        ],
+        [
+          319.0,
+          376.0
+        ],
+        [
+          377.0,
+          418.0
+        ],
+        [
+          419.0,
+          455.0
+        ],
+        [
+          456.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              11.0,
+              18.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              18.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/lesser-scaup",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "小潛鴨"
+    },
+    {
+      "slug": "lion",
+      "name": "Lion",
+      "latin": "Panthera leo",
+      "tier": 6,
+      "hit_energy_j": [
+        4223.0,
+        5763.0
+      ],
+      "primary_habitat": [
+        "Savanna"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          380.0,
+          421.0
+        ],
+        [
+          422.0,
+          446.0
+        ],
+        [
+          447.0,
+          465.0
+        ],
+        [
+          466.0,
+          487.0
+        ],
+        [
+          488.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              70.0,
+              160.0
+            ],
+            "weight_text": "70 - 160 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              65.0,
+              110.0
+            ],
+            "weight_text": "65 - 110 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              160.0,
+              225.0
+            ],
+            "weight_text": "160 - 225 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              110.0,
+              125.0
+            ],
+            "weight_text": "110 - 125 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              6.0,
+              10.0
+            ],
+            "weight": [
+              225.0,
+              312.0
+            ],
+            "weight_text": "225 - 312 kg"
+          },
+          "F": {
+            "age": [
+              6.0,
+              16.0
+            ],
+            "weight": [
+              125.0,
+              145.0
+            ],
+            "weight_text": "125 - 145 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/lion",
+      "life_cycle_profile": "Predator",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 19,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "獅子"
+    },
+    {
+      "slug": "merriams-wild-turkey",
+      "name": "Merriam's wild turkey",
+      "latin": "Meleagris gallopavo merriami",
+      "tier": 1,
+      "hit_energy_j": [
+        20.0,
+        1200.0
+      ],
+      "primary_habitat": [
+        "Highland forest",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Mountains"
+      ],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          188.0,
+          299.0
+        ],
+        [
+          300.0,
+          372.0
+        ],
+        [
+          373.0,
+          410.0
+        ],
+        [
+          411.0,
+          467.0
+        ],
+        [
+          468.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              1.0
+            ],
+            "weight": [
+              4.0,
+              6.0
+            ],
+            "weight_text": "4 - 6 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              1.0
+            ],
+            "weight": [
+              3.0,
+              5.0
+            ],
+            "weight_text": "3 - 5 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              2.0,
+              3.0
+            ],
+            "weight": [
+              6.0,
+              8.0
+            ],
+            "weight_text": "6 - 8 kg"
+          },
+          "F": {
+            "age": [
+              2.0,
+              3.0
+            ],
+            "weight": [
+              5.0,
+              8.0
+            ],
+            "weight_text": "5 - 8 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              4.0,
+              5.0
+            ],
+            "weight": [
+              8.0,
+              11.0
+            ],
+            "weight_text": "8 - 11 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              5.0
+            ],
+            "weight": [
+              8.0,
+              9.0
+            ],
+            "weight_text": "8 - 9 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/merriams-wild-turkey",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Matariki Park",
+        "Elkcrest Island"
+      ],
+      "name_zh": "梅里亞姆野火雞"
+    },
+    {
+      "slug": "mouflon",
+      "name": "Mouflon",
+      "latin": "Ovis musimon",
+      "tier": 5,
+      "hit_energy_j": [
+        1345.0,
+        3498.0
+      ],
+      "primary_habitat": [
+        "Highland forest"
+      ],
+      "secondary_habitat": [
+        "Mountains",
+        "Highlands (Finland)"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          228.0,
+          334.0
+        ],
+        [
+          335.0,
+          379.0
+        ],
+        [
+          380.0,
+          422.0
+        ],
+        [
+          423.0,
+          469.0
+        ],
+        [
+          470.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              27.0,
+              40.0
+            ],
+            "weight_text": "27 - 40 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              22.0,
+              30.0
+            ],
+            "weight_text": "22 - 30 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              40.0,
+              52.0
+            ],
+            "weight_text": "40 - 52 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              30.0,
+              38.0
+            ],
+            "weight_text": "30 - 38 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              10.0
+            ],
+            "weight": [
+              52.0,
+              65.0
+            ],
+            "weight_text": "52 - 65 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              10.0
+            ],
+            "weight": [
+              38.0,
+              45.0
+            ],
+            "weight_text": "38 - 45 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/mouflon",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "歐洲盤羊"
+    },
+    {
+      "slug": "mountain-goat",
+      "name": "Mountain goat",
+      "latin": "Oreamnos americanus",
+      "tier": 5,
+      "hit_energy_j": [
+        1576.0,
+        3636.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          261.0,
+          349.0
+        ],
+        [
+          350.0,
+          395.0
+        ],
+        [
+          396.0,
+          429.0
+        ],
+        [
+          430.0,
+          463.0
+        ],
+        [
+          464.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              39.0,
+              70.0
+            ],
+            "weight_text": "39 - 70 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              25.0,
+              50.0
+            ],
+            "weight_text": "25 - 50 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              10.0
+            ],
+            "weight": [
+              70.0,
+              100.0
+            ],
+            "weight_text": "70 - 100 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              10.0
+            ],
+            "weight": [
+              50.0,
+              75.0
+            ],
+            "weight_text": "50 - 75 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              11.0,
+              16.0
+            ],
+            "weight": [
+              100.0,
+              140.0
+            ],
+            "weight_text": "100 - 140 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              16.0
+            ],
+            "weight": [
+              75.0,
+              100.0
+            ],
+            "weight_text": "75 - 100 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/mountain-goat",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "雪羊"
+    },
+    {
+      "slug": "mountain-reindeer",
+      "name": "Mountain reindeer",
+      "latin": "Rangifer tarandus tarandus",
+      "tier": 5,
+      "hit_energy_j": [
+        1515.0,
+        3721.0
+      ],
+      "primary_habitat": [
+        "Highlands"
+      ],
+      "secondary_habitat": [
+        "Highland forests and grasslands"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          176.0,
+          300.0
+        ],
+        [
+          301.0,
+          365.0
+        ],
+        [
+          366.0,
+          415.0
+        ],
+        [
+          416.0,
+          461.0
+        ],
+        [
+          462.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              80.0,
+              130.0
+            ],
+            "weight_text": "80 - 130 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              60.0,
+              80.0
+            ],
+            "weight_text": "60 - 80 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              130.0,
+              160.0
+            ],
+            "weight_text": "130 - 160 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              11.0
+            ],
+            "weight": [
+              80.0,
+              105.0
+            ],
+            "weight_text": "80 - 105 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              17.0
+            ],
+            "weight": [
+              160.0,
+              200.0
+            ],
+            "weight_text": "160 - 200 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              20.0
+            ],
+            "weight": [
+              105.0,
+              120.0
+            ],
+            "weight_text": "105 - 120 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/mountain-reindeer",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "山地馴鹿"
+    },
+    {
+      "slug": "mule-deer",
+      "name": "Mule deer",
+      "latin": "Odocoileus hemionus",
+      "tier": 5,
+      "hit_energy_j": [
+        1576.0,
+        3783.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Highland forest"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          139.0,
+          264.0
+        ],
+        [
+          265.0,
+          339.0
+        ],
+        [
+          340.0,
+          399.0
+        ],
+        [
+          400.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              50.0,
+              90.0
+            ],
+            "weight_text": "50 - 90 kg"
+          },
+          "F": {
+            "age": [
+              2.0,
+              4.0
+            ],
+            "weight": [
+              40.0,
+              60.0
+            ],
+            "weight_text": "40 - 60 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              90.0,
+              140.0
+            ],
+            "weight_text": "90 - 140 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              7.0
+            ],
+            "weight": [
+              60.0,
+              80.0
+            ],
+            "weight_text": "60 - 80 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              140.0,
+              200.0
+            ],
+            "weight_text": "140 - 200 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              12.0
+            ],
+            "weight": [
+              80.0,
+              100.0
+            ],
+            "weight_text": "80 - 100 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/mule-deer",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley"
+      ],
+      "name_zh": "騾鹿"
+    },
+    {
+      "slug": "north-american-cougar",
+      "name": "North American cougar",
+      "latin": "Puma concolor couguar",
+      "tier": 5,
+      "hit_energy_j": [
+        1683.0,
+        3967.0
+      ],
+      "primary_habitat": [
+        "Highlands",
+        "Highland forest",
+        "Mountains"
+      ],
+      "secondary_habitat": [
+        "Grasslands"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          344.0,
+          399.0
+        ],
+        [
+          400.0,
+          430.0
+        ],
+        [
+          431.0,
+          452.0
+        ],
+        [
+          453.0,
+          476.0
+        ],
+        [
+          477.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              36.0,
+              59.0
+            ],
+            "weight_text": "36 - 59 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              29.0,
+              39.0
+            ],
+            "weight_text": "29 - 39 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              12.0
+            ],
+            "weight": [
+              60.0,
+              89.0
+            ],
+            "weight_text": "60 - 89 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              12.0
+            ],
+            "weight": [
+              40.0,
+              54.0
+            ],
+            "weight_text": "40 - 54 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              13.0,
+              20.0
+            ],
+            "weight": [
+              90.0,
+              120.0
+            ],
+            "weight_text": "90 - 120 kg"
+          },
+          "F": {
+            "age": [
+              13.0,
+              20.0
+            ],
+            "weight": [
+              55.0,
+              64.0
+            ],
+            "weight_text": "55 - 64 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/north-american-cougar",
+      "life_cycle_profile": "PredatorMedium",
+      "schedule": [
+        {
+          "time": 1,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 8,
+          "activity": "Sleep"
+        },
+        {
+          "time": 13,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Drink"
+        },
+        {
+          "time": 22,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "美洲獅"
+    },
+    {
+      "slug": "northern-lynx",
+      "name": "Northern lynx",
+      "latin": "Lynx lynx lynx",
+      "tier": 4,
+      "hit_energy_j": [
+        1098.0,
+        2950.0
+      ],
+      "primary_habitat": [
+        "Highland forests and grasslands"
+      ],
+      "secondary_habitat": [
+        "Lowland forests"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          415.0,
+          446.0
+        ],
+        [
+          447.0,
+          463.0
+        ],
+        [
+          464.0,
+          477.0
+        ],
+        [
+          478.0,
+          489.0
+        ],
+        [
+          490.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              10.0,
+              14.0
+            ],
+            "weight_text": "10 - 14 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              8.0,
+              12.0
+            ],
+            "weight_text": "8 - 12 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              9.0
+            ],
+            "weight": [
+              14.0,
+              19.0
+            ],
+            "weight_text": "14 - 19 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              11.0
+            ],
+            "weight": [
+              12.0,
+              17.0
+            ],
+            "weight_text": "12 - 17 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              15.0
+            ],
+            "weight": [
+              19.0,
+              24.0
+            ],
+            "weight_text": "19 - 24 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              17.0
+            ],
+            "weight": [
+              17.0,
+              21.0
+            ],
+            "weight_text": "17 - 21 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/northern-lynx",
+      "life_cycle_profile": "PredatorSmall",
+      "schedule": [
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 12,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 21,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "北方猞猁"
+    },
+    {
+      "slug": "pheasant",
+      "name": "Pheasant",
+      "latin": "Phasianus Colchicus",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        402.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Swamps (Finland)"
+      ],
+      "secondary_habitat": [
+        "Lowland forests (Finland)"
+      ],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          225.0,
+          329.0
+        ],
+        [
+          330.0,
+          384.0
+        ],
+        [
+          385.0,
+          429.0
+        ],
+        [
+          430.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              3.0
+            ],
+            "weight_text": "2 - 3 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              2.0,
+              2.0
+            ],
+            "weight_text": "2 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/pheasant",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Transylvania",
+        "Matariki Park",
+        "Lintukoto Reserve",
+        "Elkcrest Island"
+      ],
+      "name_zh": "雉雞"
+    },
+    {
+      "slug": "red-deer",
+      "name": "Red deer",
+      "latin": "Cervus elaphus",
+      "tier": 6,
+      "hit_energy_j": [
+        2693.0,
+        4579.0
+      ],
+      "primary_habitat": [
+        "Lowland forest",
+        "Highland forest"
+      ],
+      "secondary_habitat": [
+        "Grasslands",
+        "Highland forests and grasslands"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          116.0,
+          259.0
+        ],
+        [
+          260.0,
+          339.0
+        ],
+        [
+          340.0,
+          399.0
+        ],
+        [
+          400.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              130.0,
+              160.0
+            ],
+            "weight_text": "130 - 160 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              100.0,
+              120.0
+            ],
+            "weight_text": "100 - 120 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              160.0,
+              200.0
+            ],
+            "weight_text": "160 - 200 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              120.0,
+              150.0
+            ],
+            "weight_text": "120 - 150 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              200.0,
+              240.0
+            ],
+            "weight_text": "200 - 240 kg"
+          },
+          "F": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              150.0,
+              170.0
+            ],
+            "weight_text": "150 - 170 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/red-deer",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "赤鹿"
+    },
+    {
+      "slug": "red-deer-new-zealand",
+      "name": "Red deer (New Zealand)",
+      "latin": "Cervus elaphus",
+      "tier": 6,
+      "hit_energy_j": [
+        2693.0,
+        4579.0
+      ],
+      "primary_habitat": [
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Grasslands",
+        "Mountains"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          77.0,
+          243.0
+        ],
+        [
+          244.0,
+          328.0
+        ],
+        [
+          329.0,
+          392.0
+        ],
+        [
+          393.0,
+          456.0
+        ],
+        [
+          457.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              130.0,
+              160.0
+            ],
+            "weight_text": "130 - 160 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              100.0,
+              120.0
+            ],
+            "weight_text": "100 - 120 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              8.0
+            ],
+            "weight": [
+              160.0,
+              200.0
+            ],
+            "weight_text": "160 - 200 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              8.0
+            ],
+            "weight": [
+              120.0,
+              150.0
+            ],
+            "weight_text": "120 - 150 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              200.0,
+              240.0
+            ],
+            "weight_text": "200 - 240 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              12.0
+            ],
+            "weight": [
+              150.0,
+              170.0
+            ],
+            "weight_text": "150 - 170 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/red-deer-new-zealand",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "紐西蘭赤鹿"
+    },
+    {
+      "slug": "red-fox",
+      "name": "Red fox",
+      "latin": "Vulpes vulpes",
+      "tier": 3,
+      "hit_energy_j": [
+        612.0,
+        1836.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Highland forest"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          296.0,
+          385.0
+        ],
+        [
+          386.0,
+          429.0
+        ],
+        [
+          430.0,
+          458.0
+        ],
+        [
+          459.0,
+          482.0
+        ],
+        [
+          483.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              2.0,
+              6.0
+            ],
+            "weight_text": "2 - 6 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              2.0,
+              5.0
+            ],
+            "weight_text": "2 - 5 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              6.0,
+              10.0
+            ],
+            "weight_text": "6 - 10 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              4.0
+            ],
+            "weight": [
+              5.0,
+              8.0
+            ],
+            "weight_text": "5 - 8 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              10.0,
+              14.0
+            ],
+            "weight_text": "10 - 14 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              6.0
+            ],
+            "weight": [
+              8.0,
+              12.0
+            ],
+            "weight_text": "8 - 12 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/red-fox",
+      "life_cycle_profile": "PredatorSmall",
+      "schedule": [
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 12,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 21,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Transylvania",
+        "Aurora Shores",
+        "Lintukoto Reserve",
+        "Elkcrest Island"
+      ],
+      "name_zh": "赤狐"
+    },
+    {
+      "slug": "rocky-mountain-elk",
+      "name": "Rocky Mountain elk",
+      "latin": "Cervus canadensis nelsoni",
+      "tier": 6,
+      "hit_energy_j": [
+        2912.0,
+        4951.0
+      ],
+      "primary_habitat": [
+        "Highland forest"
+      ],
+      "secondary_habitat": [
+        "Lowland forest"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          160.0,
+          284.0
+        ],
+        [
+          285.0,
+          356.0
+        ],
+        [
+          357.0,
+          408.0
+        ],
+        [
+          409.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              178.0,
+              250.0
+            ],
+            "weight_text": "178 - 250 kg"
+          },
+          "F": {
+            "age": [
+              2.0,
+              4.0
+            ],
+            "weight": [
+              171.0,
+              210.0
+            ],
+            "weight_text": "171 - 210 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              250.0,
+              370.0
+            ],
+            "weight_text": "250 - 370 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              7.0
+            ],
+            "weight": [
+              210.0,
+              250.0
+            ],
+            "weight_text": "210 - 250 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              370.0,
+              497.0
+            ],
+            "weight_text": "370 - 497 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              13.0
+            ],
+            "weight": [
+              250.0,
+              292.0
+            ],
+            "weight_text": "250 - 292 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/rocky-mountain-elk",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Matariki Park"
+      ],
+      "name_zh": "洛磯山馬鹿"
+    },
+    {
+      "slug": "roe-deer",
+      "name": "Roe deer",
+      "latin": "Capreolus capreolus",
+      "tier": 4,
+      "hit_energy_j": [
+        945.0,
+        2458.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Highland forests and grasslands",
+        "Swamps (Finland)"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          164.0,
+          295.0
+        ],
+        [
+          296.0,
+          367.0
+        ],
+        [
+          368.0,
+          427.0
+        ],
+        [
+          428.0,
+          465.0
+        ],
+        [
+          466.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              10.0,
+              20.0
+            ],
+            "weight_text": "10 - 20 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              10.0,
+              20.0
+            ],
+            "weight_text": "10 - 20 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              20.0,
+              30.0
+            ],
+            "weight_text": "20 - 30 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              20.0,
+              30.0
+            ],
+            "weight_text": "20 - 30 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              6.0,
+              8.0
+            ],
+            "weight": [
+              30.0,
+              40.0
+            ],
+            "weight_text": "30 - 40 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              12.0
+            ],
+            "weight": [
+              30.0,
+              40.0
+            ],
+            "weight_text": "30 - 40 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/roe-deer",
+      "life_cycle_profile": "BigGameSmall",
+      "schedule": [
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 11,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Drink"
+        },
+        {
+          "time": 22,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "狍"
+    },
+    {
+      "slug": "roosevelt-elk",
+      "name": "Roosevelt elk",
+      "latin": "Cervus canadensis roosevelti",
+      "tier": 6,
+      "hit_energy_j": [
+        2912.0,
+        5532.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          146.0,
+          284.0
+        ],
+        [
+          285.0,
+          356.0
+        ],
+        [
+          357.0,
+          408.0
+        ],
+        [
+          409.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              200.0,
+              300.0
+            ],
+            "weight_text": "200 - 300 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              171.0,
+              210.0
+            ],
+            "weight_text": "171 - 210 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              300.0,
+              500.0
+            ],
+            "weight_text": "300 - 500 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              210.0,
+              250.0
+            ],
+            "weight_text": "210 - 250 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              500.0,
+              600.0
+            ],
+            "weight_text": "500 - 600 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              15.0
+            ],
+            "weight": [
+              250.0,
+              292.0
+            ],
+            "weight_text": "250 - 292 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/roosevelt-elk",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "羅斯福馬鹿"
+    },
+    {
+      "slug": "rosss-goose",
+      "name": "Ross's goose",
+      "latin": "Anser rossii",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        279.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          127.0,
+          267.0
+        ],
+        [
+          268.0,
+          338.0
+        ],
+        [
+          339.0,
+          394.0
+        ],
+        [
+          395.0,
+          445.0
+        ],
+        [
+          446.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              11.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              12.0,
+              20.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              20.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/rosss-goose",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley"
+      ],
+      "name_zh": "羅氏雁"
+    },
+    {
+      "slug": "sambar-deer",
+      "name": "Sambar deer",
+      "latin": "Rusa unicolor",
+      "tier": 6,
+      "hit_energy_j": [
+        2857.0,
+        4733.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Mountains"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          136.0,
+          272.0
+        ],
+        [
+          273.0,
+          342.0
+        ],
+        [
+          343.0,
+          397.0
+        ],
+        [
+          398.0,
+          446.0
+        ],
+        [
+          447.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              170.0,
+              191.0
+            ],
+            "weight_text": "170 - 191 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              105.0,
+              141.0
+            ],
+            "weight_text": "105 - 141 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              13.0
+            ],
+            "weight": [
+              191.0,
+              260.0
+            ],
+            "weight_text": "191 - 260 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              13.0
+            ],
+            "weight": [
+              141.0,
+              173.0
+            ],
+            "weight_text": "141 - 173 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              14.0,
+              20.0
+            ],
+            "weight": [
+              260.0,
+              310.0
+            ],
+            "weight_text": "260 - 310 kg"
+          },
+          "F": {
+            "age": [
+              14.0,
+              20.0
+            ],
+            "weight": [
+              173.0,
+              210.0
+            ],
+            "weight_text": "173 - 210 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/sambar-deer",
+      "life_cycle_profile": "BigGameNocturnal",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 7,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Drink"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "水鹿"
+    },
+    {
+      "slug": "sika-deer",
+      "name": "Sika deer",
+      "latin": "Cervus nippon",
+      "tier": 5,
+      "hit_energy_j": [
+        1457.0,
+        3269.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Highlands"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          212.0,
+          319.0
+        ],
+        [
+          320.0,
+          374.0
+        ],
+        [
+          375.0,
+          418.0
+        ],
+        [
+          419.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              59.0,
+              73.0
+            ],
+            "weight_text": "59 - 73 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              45.0,
+              61.0
+            ],
+            "weight_text": "45 - 61 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              13.0
+            ],
+            "weight": [
+              73.0,
+              84.0
+            ],
+            "weight_text": "73 - 84 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              13.0
+            ],
+            "weight": [
+              61.0,
+              73.0
+            ],
+            "weight_text": "61 - 73 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              14.0,
+              20.0
+            ],
+            "weight": [
+              84.0,
+              92.0
+            ],
+            "weight_text": "84 - 92 kg"
+          },
+          "F": {
+            "age": [
+              14.0,
+              20.0
+            ],
+            "weight": [
+              73.0,
+              81.0
+            ],
+            "weight_text": "73 - 81 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/sika-deer",
+      "life_cycle_profile": "BigGameNocturnal",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 7,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Drink"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Matariki Park"
+      ],
+      "name_zh": "梅花鹿"
+    },
+    {
+      "slug": "sitka-deer",
+      "name": "Sitka deer",
+      "latin": "Odocoileus hemionus sitkensis",
+      "tier": 5,
+      "hit_energy_j": [
+        945.0,
+        2458.0
+      ],
+      "primary_habitat": [
+        "Rainforest"
+      ],
+      "secondary_habitat": [
+        "Highland forest"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          140.0,
+          263.0
+        ],
+        [
+          264.0,
+          326.0
+        ],
+        [
+          327.0,
+          402.0
+        ],
+        [
+          403.0,
+          463.0
+        ],
+        [
+          464.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              25.0,
+              45.0
+            ],
+            "weight_text": "25 - 45 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              15.0,
+              25.0
+            ],
+            "weight_text": "15 - 25 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              45.0,
+              70.0
+            ],
+            "weight_text": "45 - 70 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              25.0,
+              35.0
+            ],
+            "weight_text": "25 - 35 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              70.0,
+              91.0
+            ],
+            "weight_text": "70 - 91 kg"
+          },
+          "F": {
+            "age": [
+              7.0,
+              12.0
+            ],
+            "weight": [
+              35.0,
+              45.0
+            ],
+            "weight_text": "35 - 45 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/sitka-deer",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "錫特卡鹿"
+    },
+    {
+      "slug": "snowshoe-hare",
+      "name": "Snowshoe hare",
+      "latin": "Lepus americanus",
+      "tier": 1,
+      "hit_energy_j": [
+        56.0,
+        628.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          326.0,
+          393.0
+        ],
+        [
+          394.0,
+          428.0
+        ],
+        [
+          429.0,
+          464.0
+        ],
+        [
+          465.0,
+          484.0
+        ],
+        [
+          485.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              1.4
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              1.4
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              2.4,
+              3.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              2.4,
+              3.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              4.0,
+              5.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              5.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/snowshoe-hare",
+      "life_cycle_profile": "Smallgame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Feed"
+        },
+        {
+          "time": 3,
+          "activity": "Sleep"
+        },
+        {
+          "time": 9,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "雪鞋兔"
+    },
+    {
+      "slug": "spotted-hyena",
+      "name": "Spotted hyena",
+      "latin": "Crocuta crocuta",
+      "tier": 5,
+      "hit_energy_j": [
+        2501.0,
+        4003.0
+      ],
+      "primary_habitat": [
+        "Highlands"
+      ],
+      "secondary_habitat": [
+        "Savanna"
+      ],
+      "trophy_type": "Skull",
+      "trophy_ranges": [
+        [
+          373.0,
+          421.0
+        ],
+        [
+          422.0,
+          447.0
+        ],
+        [
+          448.0,
+          467.0
+        ],
+        [
+          468.0,
+          486.0
+        ],
+        [
+          487.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              25.0,
+              40.0
+            ],
+            "weight_text": "25 - 40 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              25.0,
+              42.0
+            ],
+            "weight_text": "25 - 42 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              11.0
+            ],
+            "weight": [
+              40.0,
+              70.0
+            ],
+            "weight_text": "40 - 70 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              11.0
+            ],
+            "weight": [
+              42.0,
+              75.0
+            ],
+            "weight_text": "42 - 75 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              12.0,
+              20.0
+            ],
+            "weight": [
+              70.0,
+              82.0
+            ],
+            "weight_text": "70 - 82 kg"
+          },
+          "F": {
+            "age": [
+              12.0,
+              20.0
+            ],
+            "weight": [
+              75.0,
+              90.0
+            ],
+            "weight_text": "75 - 90 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/spotted-hyena",
+      "life_cycle_profile": "PredatorMedium",
+      "schedule": [
+        {
+          "time": 1,
+          "activity": "Feed"
+        },
+        {
+          "time": 5,
+          "activity": "Drink"
+        },
+        {
+          "time": 8,
+          "activity": "Sleep"
+        },
+        {
+          "time": 13,
+          "activity": "Feed"
+        },
+        {
+          "time": 17,
+          "activity": "Drink"
+        },
+        {
+          "time": 22,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "斑鬣狗"
+    },
+    {
+      "slug": "springbok",
+      "name": "Springbok",
+      "latin": "Antidorcas marsupialis hofmeyri",
+      "tier": 4,
+      "hit_energy_j": [
+        1645.0,
+        3125.0
+      ],
+      "primary_habitat": [
+        "Arid savanna and desert"
+      ],
+      "secondary_habitat": [
+        "Grasslands and forests"
+      ],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          223.0,
+          326.0
+        ],
+        [
+          327.0,
+          378.0
+        ],
+        [
+          379.0,
+          418.0
+        ],
+        [
+          419.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              15.0,
+              26.0
+            ],
+            "weight_text": "15 - 26 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              12.0,
+              22.0
+            ],
+            "weight_text": "12 - 22 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              8.0
+            ],
+            "weight": [
+              26.0,
+              35.0
+            ],
+            "weight_text": "26 - 35 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              8.0
+            ],
+            "weight": [
+              22.0,
+              30.0
+            ],
+            "weight_text": "22 - 30 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              9.0,
+              18.0
+            ],
+            "weight": [
+              35.0,
+              50.0
+            ],
+            "weight_text": "35 - 50 kg"
+          },
+          "F": {
+            "age": [
+              9.0,
+              18.0
+            ],
+            "weight": [
+              30.0,
+              37.0
+            ],
+            "weight_text": "30 - 37 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/springbok",
+      "life_cycle_profile": "BigGameSmall",
+      "schedule": [
+        {
+          "time": 3,
+          "activity": "Feed"
+        },
+        {
+          "time": 7,
+          "activity": "Drink"
+        },
+        {
+          "time": 11,
+          "activity": "Sleep"
+        },
+        {
+          "time": 15,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Drink"
+        },
+        {
+          "time": 22,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Tikamoon Plains"
+      ],
+      "name_zh": "跳羚"
+    },
+    {
+      "slug": "surf-scoter",
+      "name": "Surf scoter",
+      "latin": "Melanitta perspicillata",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        174.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          290.0,
+          368.0
+        ],
+        [
+          369.0,
+          412.0
+        ],
+        [
+          413.0,
+          443.0
+        ],
+        [
+          444.0,
+          468.0
+        ],
+        [
+          469.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              11.0,
+              19.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              11.0,
+              19.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/surf-scoter",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "斑頭海番鴨"
+    },
+    {
+      "slug": "western-moose",
+      "name": "Western moose",
+      "latin": "Alces alces andersoni",
+      "tier": 6,
+      "hit_energy_j": [
+        3088.0,
+        5867.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          101.0,
+          284.0
+        ],
+        [
+          285.0,
+          361.0
+        ],
+        [
+          362.0,
+          411.0
+        ],
+        [
+          412.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              150.0,
+              230.0
+            ],
+            "weight_text": "150 - 230 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              130.0,
+              175.0
+            ],
+            "weight_text": "130 - 175 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              230.0,
+              330.0
+            ],
+            "weight_text": "230 - 330 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              7.0
+            ],
+            "weight": [
+              175.0,
+              225.0
+            ],
+            "weight_text": "175 - 225 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              8.0,
+              12.0
+            ],
+            "weight": [
+              330.0,
+              635.0
+            ],
+            "weight_text": "330 - 635 kg"
+          },
+          "F": {
+            "age": [
+              8.0,
+              12.0
+            ],
+            "weight": [
+              225.0,
+              450.0
+            ],
+            "weight_text": "225 - 450 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/western-moose",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley"
+      ],
+      "name_zh": "西部駝鹿"
+    },
+    {
+      "slug": "white-tailed-deer",
+      "name": "White-tailed deer",
+      "latin": "Odocoileus virginianus",
+      "tier": 5,
+      "hit_energy_j": [
+        1543.0,
+        3705.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest"
+      ],
+      "secondary_habitat": [
+        "Highland forest"
+      ],
+      "trophy_type": "Antlers",
+      "trophy_ranges": [
+        [
+          118.0,
+          282.0
+        ],
+        [
+          283.0,
+          349.0
+        ],
+        [
+          350.0,
+          416.0
+        ],
+        [
+          417.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              46.0,
+              90.0
+            ],
+            "weight_text": "46 - 90 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              29.0,
+              45.0
+            ],
+            "weight_text": "29 - 45 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              5.0
+            ],
+            "weight": [
+              90.0,
+              135.0
+            ],
+            "weight_text": "90 - 135 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              6.0
+            ],
+            "weight": [
+              45.0,
+              68.0
+            ],
+            "weight_text": "45 - 68 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              6.0,
+              8.0
+            ],
+            "weight": [
+              135.0,
+              183.0
+            ],
+            "weight_text": "135 - 183 kg"
+          },
+          "F": {
+            "age": [
+              7.0,
+              11.0
+            ],
+            "weight": [
+              68.0,
+              90.0
+            ],
+            "weight_text": "68 - 90 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/white-tailed-deer",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Matariki Park"
+      ],
+      "name_zh": "白尾鹿"
+    },
+    {
+      "slug": "wild-boar",
+      "name": "Wild boar",
+      "latin": "Sus scrofa",
+      "tier": 5,
+      "hit_energy_j": [
+        1625.0,
+        3900.0
+      ],
+      "primary_habitat": [
+        "Grasslands",
+        "Lowland forest",
+        "Swamps (Finland)"
+      ],
+      "secondary_habitat": [
+        "Floodplain",
+        "Lowland forests (Finland)"
+      ],
+      "trophy_type": "Tusks",
+      "trophy_ranges": [
+        [
+          243.0,
+          341.0
+        ],
+        [
+          342.0,
+          390.0
+        ],
+        [
+          391.0,
+          425.0
+        ],
+        [
+          426.0,
+          462.0
+        ],
+        [
+          463.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              60.0
+            ],
+            "weight_text": "20 - 60 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              20.0,
+              45.0
+            ],
+            "weight_text": "20 - 45 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              60.0,
+              110.0
+            ],
+            "weight_text": "60 - 110 kg"
+          },
+          "F": {
+            "age": [
+              5.0,
+              9.0
+            ],
+            "weight": [
+              45.0,
+              85.0
+            ],
+            "weight_text": "45 - 85 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              110.0,
+              200.0
+            ],
+            "weight_text": "110 - 200 kg"
+          },
+          "F": {
+            "age": [
+              10.0,
+              14.0
+            ],
+            "weight": [
+              85.0,
+              175.0
+            ],
+            "weight_text": "85 - 175 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/wild-boar",
+      "life_cycle_profile": "BigGameMedium",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Drink"
+        },
+        {
+          "time": 2,
+          "activity": "Sleep"
+        },
+        {
+          "time": 7,
+          "activity": "Feed"
+        },
+        {
+          "time": 11,
+          "activity": "Drink"
+        },
+        {
+          "time": 15,
+          "activity": "Sleep"
+        },
+        {
+          "time": 19,
+          "activity": "Feed"
+        }
+      ],
+      "reserves": [
+        "Transylvania",
+        "Matariki Park",
+        "Lintukoto Reserve"
+      ],
+      "name_zh": "野豬"
+    },
+    {
+      "slug": "wild-duck",
+      "name": "Wild duck",
+      "latin": "Anas platyrhynchos",
+      "tier": 1,
+      "hit_energy_j": [
+        1.0,
+        255.0
+      ],
+      "primary_habitat": [
+        "Swamps"
+      ],
+      "secondary_habitat": [
+        "Floodplain"
+      ],
+      "trophy_type": "Weight",
+      "trophy_ranges": [
+        [
+          180.0,
+          299.0
+        ],
+        [
+          300.0,
+          358.0
+        ],
+        [
+          359.0,
+          408.0
+        ],
+        [
+          409.0,
+          459.0
+        ],
+        [
+          460.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              2.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              3.0,
+              6.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          },
+          "F": {
+            "age": [
+              3.0,
+              6.0
+            ],
+            "weight": [
+              1.0,
+              1.0
+            ],
+            "weight_text": "1 - 1 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              7.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          },
+          "F": {
+            "age": [
+              7.0,
+              10.0
+            ],
+            "weight": [
+              1.0,
+              2.0
+            ],
+            "weight_text": "1 - 2 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/wild-duck",
+      "life_cycle_profile": "Birds",
+      "schedule": [
+        {
+          "time": 6,
+          "activity": "Feed"
+        },
+        {
+          "time": 10,
+          "activity": "Sleep"
+        },
+        {
+          "time": 12,
+          "activity": "Feed"
+        },
+        {
+          "time": 16,
+          "activity": "Sleep"
+        },
+        {
+          "time": 18,
+          "activity": "Feed"
+        },
+        {
+          "time": 20,
+          "activity": "Sleep"
+        }
+      ],
+      "reserves": [
+        "Nez Perce Valley",
+        "Transylvania",
+        "Aurora Shores",
+        "Matariki Park",
+        "Lintukoto Reserve",
+        "Elkcrest Island"
+      ],
+      "name_zh": "綠頭鴨"
+    },
+    {
+      "slug": "wood-bison",
+      "name": "Wood bison",
+      "latin": "Bison bison athabascae",
+      "tier": 6,
+      "hit_energy_j": [
+        3783.0,
+        6390.0
+      ],
+      "primary_habitat": [],
+      "secondary_habitat": [],
+      "trophy_type": "Horns",
+      "trophy_ranges": [
+        [
+          200.0,
+          308.0
+        ],
+        [
+          309.0,
+          370.0
+        ],
+        [
+          371.0,
+          417.0
+        ],
+        [
+          418.0,
+          457.0
+        ],
+        [
+          458.0,
+          500.0
+        ]
+      ],
+      "stages": {
+        "Young": {
+          "M": {
+            "age": [
+              1.0,
+              4.0
+            ],
+            "weight": [
+              400.0,
+              700.0
+            ],
+            "weight_text": "400 - 700 kg"
+          },
+          "F": {
+            "age": [
+              1.0,
+              3.0
+            ],
+            "weight": [
+              300.0,
+              450.0
+            ],
+            "weight_text": "300 - 450 kg"
+          }
+        },
+        "Adult": {
+          "M": {
+            "age": [
+              5.0,
+              15.0
+            ],
+            "weight": [
+              700.0,
+              900.0
+            ],
+            "weight_text": "700 - 900 kg"
+          },
+          "F": {
+            "age": [
+              4.0,
+              15.0
+            ],
+            "weight": [
+              450.0,
+              600.0
+            ],
+            "weight_text": "450 - 600 kg"
+          }
+        },
+        "Mature": {
+          "M": {
+            "age": [
+              16.0,
+              22.0
+            ],
+            "weight": [
+              900.0,
+              1300.0
+            ],
+            "weight_text": "900 - 1,300 kg"
+          },
+          "F": {
+            "age": [
+              16.0,
+              25.0
+            ],
+            "weight": [
+              600.0,
+              700.0
+            ],
+            "weight_text": "600 - 700 kg"
+          }
+        }
+      },
+      "source": "https://toolbox.byteset.io/animals/wood-bison",
+      "life_cycle_profile": "BigGame",
+      "schedule": [
+        {
+          "time": 0,
+          "activity": "Sleep"
+        },
+        {
+          "time": 5,
+          "activity": "Feed"
+        },
+        {
+          "time": 9,
+          "activity": "Drink"
+        },
+        {
+          "time": 13,
+          "activity": "Sleep"
+        },
+        {
+          "time": 17,
+          "activity": "Feed"
+        },
+        {
+          "time": 22,
+          "activity": "Drink"
+        }
+      ],
+      "reserves": [
+        "Aurora Shores",
+        "Elkcrest Island"
+      ],
+      "name_zh": "森林野牛"
+    }
+  ],
+  "life_cycle_source": "https://toolbox.byteset.io/animals",
+  "activity_codes": {
+    "2": "Sleep",
+    "3": "Feed",
+    "4": "Drink"
+  },
+  "reserve_index": [
+    "Nez Perce Valley",
+    "Transylvania",
+    "Aurora Shores",
+    "Tikamoon Plains",
+    "Matariki Park",
+    "Lintukoto Reserve",
+    "Elkcrest Island"
+  ],
+  "reserve_source": "https://toolbox.byteset.io/maps"
+}

@@ -1,0 +1,99 @@
+{
+  "_說明": "欄位名稱規則為不分大小寫的正規表示式，會先去掉 Blueprint 後綴（例如 Weight_12_ABCD... -> Weight）。找到真正欄位名後可在此精準指定。",
+  "save_dirs": [],
+  "poll_seconds": 3,
+  "max_snapshots": 100,
+  "min_list_size": 1,
+  "fields": {
+    "species": "^(species|speciesid|speciestype|animal|animaltype|animalclass|animalid_?name|animalname|breed|kind|class|type)$",
+    "gender": "^(gender|sex|ismale|isfemale|bmale|bfemale|bismale)$",
+    "age": "^(age|agedays|ageinDays|agestage|ageclass|agegroup|agetype|lifestage|currentage)$",
+    "weight": "^(weight|mass|currentweight|weightkg)$",
+    "score": "^(score|trophyscore|trophy|trophyrating|rating|stars|starrating|trophypoints|points)$",
+    "fitness": "^(fitness|genes?|genetics?|genefitness|dna|potential|quality|genequality)$",
+    "position": "^(location|position|pos|worldlocation|worldposition|transform|coords|currentlocation|spawnlocation|lastlocation)$",
+    "id": "^(id|uid|guid|animalid|uniqueid|animalguid|individualid)$",
+    "dead": "^(dead|isdead|bisdead|killed|iskilled|harvested|isharvested|isalive|alive|bisalive)$",
+    "herd_id": "^(herdid|herdguid|groupid|herdindex|packid)$"
+  },
+  "gender_int_map": {
+    "0": "M",
+    "1": "F"
+  },
+  "identity_fields": [
+    "id",
+    "species",
+    "gender",
+    "fitness",
+    "herd_id"
+  ],
+  "star_thresholds": {
+    "_說明": "每物種分數門檻（1~5 星的最低分）。未設定的物種改用同物種百分位數。例：\"Red Deer\": [100, 200, 300, 400, 480]"
+  },
+  "maps": {
+    "_說明": "內建全部七個保護區底圖（v4.0.5 起改用 Toolbox toolbox.byteset.io 的底圖＋地形陰影＋水域＋道路合成，樣式與 Toolbox 一致，重建腳本 tools/build_maps.py）。座標範圍與 Toolbox 3D 網格 mesh.gltf 完全相同；世界座標單位為公分。",
+    "Nez Perce Valley": {
+      "image": "maps/nez_perce.webp",
+      "x_min": -600157,
+      "x_max": 600086,
+      "y_min": -600126,
+      "y_max": 600073,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "verified-real-save"
+    },
+    "Transylvania": {
+      "image": "maps/transylvania.webp",
+      "x_min": -593699,
+      "x_max": 593699,
+      "y_min": -593699,
+      "y_max": 593699,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    },
+    "Aurora Shores": {
+      "image": "maps/aurora_shores.webp",
+      "x_min": -403719,
+      "x_max": 403733,
+      "y_min": -403832,
+      "y_max": 403633,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    },
+    "Tikamoon Plains": {
+      "image": "maps/tikamoon_plains.webp",
+      "x_min": -500000,
+      "x_max": 500000,
+      "y_min": -500000,
+      "y_max": 500000,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    },
+    "Matariki Park": {
+      "image": "maps/matariki_park.webp",
+      "x_min": -406481,
+      "x_max": 406457,
+      "y_min": -406474,
+      "y_max": 406486,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    },
+    "Lintukoto Reserve": {
+      "image": "maps/lintukoto_reserve.webp",
+      "x_min": -406450,
+      "x_max": 406450,
+      "y_min": -406450,
+      "y_max": 406450,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    },
+    "Elkcrest Island": {
+      "image": "maps/elkcrest_island.webp",
+      "x_min": -406466,
+      "x_max": 406470,
+      "y_min": -406456,
+      "y_max": 406461,
+      "source": "Way of the Hunter Toolbox",
+      "calibration": "toolbox-coords"
+    }
+  }
+}

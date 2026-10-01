@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<title>WOTH 動物族群掃描器</title>
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#15191c;--panel:#1f2529;--line:#323b41;--fg:#e6e2d6;--mut:#9aa39f;--acc:#c9a24a;--new:#3fb950;--gone:#f85149}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 "Segoe UI","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--fg)}
+header{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#0f1214;border-bottom:1px solid var(--line)}
+header h1{font-size:16px;margin:0 10px 0 0;color:var(--acc)}
+select,input,button{background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:5px 8px;font:inherit}
+button{cursor:pointer}button:hover{border-color:var(--acc)}button.on{background:var(--acc);color:#111}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding:0 14px;background:#0f1214;border-bottom:1px solid var(--line)}
+nav a{padding:8px 14px;cursor:pointer;color:var(--mut);border-bottom:2px solid transparent}nav a.act{color:var(--fg);border-color:var(--acc)}
+main{padding:14px}section{display:none}section.act{display:block}
+table{border-collapse:collapse;width:100%}th,td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{position:sticky;top:0;background:var(--panel);cursor:pointer;user-select:none}tr:hover td{background:#252c31}
+td.n,th.n{text-align:right}.mut{color:var(--mut)}.new td{color:var(--new)}.gone td{color:var(--gone);text-decoration:line-through}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.stats .card b{display:block;font-size:22px;color:var(--acc)}
+.scroll{max-height:calc(100vh - 220px);overflow:auto;border:1px solid var(--line);border-radius:8px}
+#status{margin-left:auto;color:var(--mut)}canvas{background:#0d1012;border:1px solid var(--line);border-radius:8px}
+.tree{font:12px/1.5 Consolas,monospace}.tree details{margin-left:14px}.tree summary{cursor:pointer}.k{color:#79c0ff}.v{color:#e6c07b}
+.star{color:var(--acc)}.log div{padding:2px 0;border-bottom:1px dashed var(--line)}
+.warn{color:#e3b341}
+.watch{color:#ffd866;font-size:17px}.detail{margin-bottom:10px}.detail b{color:var(--acc)}
+.advice-good{color:#78dba9}.advice-low{color:#ffb86c}
+.bandchip{display:inline-block;min-width:72px;padding:2px 7px;border-radius:10px;text-align:center;color:#101315;font-weight:600}
+.band-vl{background:#85909a}.band-l{background:#55a6d9}.band-m{background:#a06bd6;color:#fff}.band-h{background:#d7a928}.band-vh{background:#e7c14f}
+.vaultgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:10px;margin-bottom:14px}
+.vcard h3{margin:0 0 8px;color:var(--acc)}.vcard.missing{opacity:.62;border-style:dashed}.vnums{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:9px 0}.vnums b{display:block;color:var(--acc);font-size:18px}.badge{padding:2px 7px;border-radius:10px;background:#303941;color:var(--mut);font-size:12px}.badge.current{background:#214d36;color:#78dba9}
+.zleg span{display:inline-block;width:10px;height:10px;border-radius:5px;margin:0 3px 0 8px}.hl{background:#2d3a22}
+.pin-exact{color:#57d9ff}.pin-manual{color:#ffb84d}.methodgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}.routebadge{display:inline-block;min-width:24px;text-align:center;border-radius:12px;background:#57d9ff;color:#071014;font-weight:700}
+.glossgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:8px;align-items:start}.glosshead{grid-column:1/-1;margin:10px 0 0;color:var(--acc)}.gloss b{color:var(--acc)}.gloss>div{margin-top:4px;white-space:normal;line-height:1.5}
+</style></head><body>
+<header>
+ <h1>🦌 WOTH 動物族群掃描器 <span class="mut">4.0 Field Operations</span></h1>
+ <select id="saves" style="max-width:420px"></select>
+ <input id="manual" placeholder="或輸入 .sav 完整路徑" size="36">
+ <button id="load">讀取</button>
+ <button id="live">● Live 模式</button>
+ <select id="mapf"><option value="">全部地圖</option></select>
+ <button id="csv">匯出 CSV</button>
+ <span id="status">尚未讀取</span>
+</header>
+<nav id="tabs">
+ <a data-t="vault" class="act">保護區中心</a><a data-t="sum">總覽</a><a data-t="manage">管理建議</a><a data-t="strategy">Fitness 策略</a><a data-t="habitat">棲地實驗室</a><a data-t="observatory">族群觀測站</a><a data-t="expedition">遠征路線</a><a data-t="planner">狩獵規劃</a><a data-t="guide">全地圖百科</a><a data-t="list">動物清單</a><a data-t="herds">獸群</a><a data-t="map">地圖</a>
+ <a data-t="live">即時事件</a><a data-t="journal">狩獵日誌</a><a data-t="history">歷史與健康</a><a data-t="cmp">快照比較</a><a data-t="tree">存檔結構</a><a data-t="info">檔案資訊</a><a data-t="glossary">名詞解釋</a>
+</nav>
+<main>
+<section id="vault" class="act">
+ <div class="bar"><button id="refreshvault">重新掃描 Vault</button><button id="exportvault">匯出保護區總表 JSON</button><span id="vaultnote" class="mut"></span></div>
+ <div class="card warn" style="margin-bottom:10px">目前檔案＝現在讀到的存檔；最後看見＝工具自己的唯讀快照。未掃描不代表 0 隻，舊地圖資料也不代表即時狀態。</div>
+ <div class="stats" id="vaultstats"></div>
+ <div class="vaultgrid" id="vaultcards"></div>
+ <h3>跨保護區比較</h3><div class="scroll" style="max-height:300px;margin-bottom:12px"><table id="vaultt"></table></div>
+ <div id="woth2box" class="card" style="margin-bottom:12px;display:none"></div>
+ <div class="bar">物種矩陣 <select id="vaultsp"><option value="">全部 60 種</option></select><span class="mut">空白＝不在該地圖 roster；「未掃描」＝尚無該保護區狀態。</span></div>
+ <div class="scroll"><table id="vaultmatrix"></table></div>
+</section>
+<section id="sum">
+ <div class="stats" id="stats"></div>
+ <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
+  <div class="scroll" style="flex:1 1 560px"><table id="sumt"></table></div>
+  <div class="card"><div class="bar">分布：<select id="histsp"></select></div><canvas id="hist" width="460" height="260"></canvas></div>
+ </div>
+</section>
+<section id="manage">
+ <div class="bar">
+  高潛力門檻 <input id="highfit" type="number" min="0" max="100" value="90" style="width:70px">%
+  低潛力觀察門檻 <input id="lowfit" type="number" min="0" max="100" value="50" style="width:70px">%
+  <span class="mut">Fitness 是生成時的潛力，不是目前 Trophy 星級；建議僅供族群管理參考。</span>
+ </div>
+ <div class="stats" id="mstats"></div>
+ <div class="scroll"><table id="mgt"></table></div>
+ <h3>關注個體狀態</h3><div class="scroll" style="max-height:260px"><table id="watcht"></table></div>
+</section>
+<section id="strategy">
+ <div class="bar">
+  物種 <select id="stratsp"><option value="">全部物種</option></select>
+  分類 <select id="stratclass"><option value="">全部分類</option><option>稀有關注</option><option>低潛力觀察</option><option>成熟高潛力</option><option>成長保護</option><option>持續觀察</option></select>
+  <label><input id="stratall" type="checkbox"> 顯示持續觀察</label>
+  <span class="mut">門檻與管理建議同步：高 <b id="strathi">90%</b>／低 <b id="stratlo">50%</b>；時間 <b id="strattime">09:00</b></span>
+ </div>
+ <div class="card warn" style="margin-bottom:10px">本頁是存檔內「已知公獸」的觀察統計，不是遊戲 Hunting Map 的官方棲地 Fitness Potential；不推測 Primary／Secondary／Private 棲地區塊，也不把候選標示視為必須獵殺。</div>
+ <div class="card" style="margin-bottom:10px">
+  官方 Update 1.26.7 指標：
+  <span class="bandchip band-vl">0–19.99%</span>
+  <span class="bandchip band-l">20–39.99%</span>
+  <span class="bandchip band-m">40–59.99%</span>
+  <span class="bandchip band-h">60–79.99%</span>
+  <span class="bandchip band-vh">80–100%</span>
+ </div>
+ <div class="stats" id="stratstats"></div>
+ <h3>物種 Fitness 分布（已知公獸）</h3>
+ <div class="scroll" style="max-height:300px;margin-bottom:12px"><table id="stratsum"></table></div>
+ <h3>個體觀察佇列</h3>
+ <div class="scroll"><table id="stratq"></table></div>
+</section>
+<section id="habitat">
+ <div class="bar">
+  物種 <select id="hsp"></select>
+  近似棲地 <select id="hhab"></select>
+  最多移除 <input id="hlimit" type="number" min="1" max="50" value="5" style="width:60px"> 隻
+  <label><input id="hmature" type="checkbox" checked> 只選成熟 (Mature) 公獸</label>
+  <label><input id="hspread" type="checkbox" checked> 分散到多個獸群</label>
+  <label><input id="hlowonly" type="checkbox"> 只選 ≤ 低潛力門檻</label>
+ </div>
+ <div class="card warn" style="margin-bottom:10px">官方說明：新年度生成個體的 Fitness 取決於「同物種、同棲地」在年度交替時的平均 Fitness；平均越高，高 Fitness 生成的<b>機率</b>越高，但不保證。本頁以存檔中已知公獸計算「觀察平均」，棲地以最近的 Toolbox 區域標籤<b>近似</b>，試算只重算平均值，不預測遊戲的生成結果，也不是必須獵殺的指令。</div>
+ <div class="stats" id="hstats"></div>
+ <h3>移除試算候選 <span class="mut" id="hcandnote"></span></h3>
+ <div class="scroll" style="max-height:280px;margin-bottom:12px"><table id="hcand"></table></div>
+ <h3>物種 × 近似棲地基因池</h3>
+ <div class="scroll" style="max-height:300px;margin-bottom:12px"><table id="hpool"></table></div>
+ <h3>接近公開年齡上限的個體</h3>
+ <div class="bar"><select id="hagef"><option value="">全部</option><option value="high">只看高潛力公獸</option><option value="rare">只看稀有</option></select><span class="mut">年齡上限是公開 Mature 年齡範圍的最大值，不是保證死亡時間。</span></div>
+ <div class="scroll" style="max-height:280px"><table id="hage"></table></div>
+</section>
+<section id="planner">
+ <div class="bar">
+  遊戲時間 <input id="gamehour" type="range" min="0" max="23" value="9" style="width:260px"><b id="gamehourlabel">09:00</b>
+  活動 <select id="activityf"><option value="">全部</option><option value="Drink">Drink／飲水</option><option value="Feed">Feed／覓食</option><option value="Sleep">Sleep／休息</option></select>
+  排序 <select id="plannersort"><option value="current">目前活動／物種</option><option value="drink">下一飲水時段</option><option value="high">高潛力數量</option></select>
+ </div>
+ <div class="card warn" style="margin-bottom:10px">⚠ 作息是活動週期，不保證動物整段時間停留於同一個 need zone；同一獸群可能輪替不同區域，也可能花時間移動。</div>
+ <div class="stats" id="plannerstats"></div>
+ <div class="scroll"><table id="plannert"></table></div>
+</section>
+<section id="guide">
+ <div class="bar">
+  <input id="catq" placeholder="搜尋英文／中文／學名" style="width:230px">
+  保護區 <select id="catreserve"><option value="">全部七張地圖</option></select>
+  Tier <select id="cattier"><option value="">全部</option><option>1</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+  活動 <select id="catact"><option value="">全部</option><option value="Drink">Drink／飲水</option><option value="Feed">Feed／覓食</option><option value="Sleep">Sleep／休息</option></select>
+  <span class="mut">規劃時間 <b id="cattime">09:00</b>（與狩獵規劃同步）</span>
+ </div>
+ <div class="card warn" style="margin-bottom:10px">保護區名單不等於目前存檔數量，也不代表精確 need-zone 座標；Trophy 範圍不能反推出個體目前星級。</div>
+ <div class="stats" id="catstats"></div>
+ <div id="catdetail" class="card detail" style="display:none;margin-bottom:10px"></div>
+ <div class="scroll"><table id="catt"></table></div>
+</section>
+<section id="list">
+ <div class="bar">
+  <select id="fsp"><option value="">全部物種</option></select>
+  <select id="fsex"><option value="">全部性別</option><option>M</option><option>F</option><option>?</option></select>
+  <select id="fage"><option value="">全部生命階段</option><option value="Young">Young／幼年</option><option value="Adult">Adult／成年</option><option value="Mature">Mature／成熟</option><option value="unknown">未知</option></select>
+  最低分數 <input id="fscore" type="number" style="width:80px">
+  <label><input type="checkbox" id="falive" checked> 只顯示存活</label>
+  <label><input type="checkbox" id="frare"> 只顯示稀有（白化/黑化…）</label>
+  最低 Fitness% <input id="ffit" type="number" style="width:70px">
+  <select id="fquality"><option value="">全部潛力</option><option value="high">高潛力</option><option value="low">低潛力觀察</option><option value="rare">稀有變種</option><option value="watch">已關注</option></select>
+  <input id="fq" placeholder="搜尋（ID/獸群/欄位）">
+  <span class="mut" id="lcount"></span>
+ </div>
+ <div id="detail" class="card detail" style="display:none"></div>
+ <div class="scroll"><table id="lt"></table></div>
+</section>
+<section id="herds"><div class="scroll"><table id="ht"></table></div></section>
+<section id="observatory">
+ <div class="bar"><button id="obsrefresh">重新分析全部快照</button><button id="obsexport">匯出 Observatory JSON</button><span id="obsnote" class="mut"></span></div>
+ <div class="card warn" style="margin-bottom:10px">這是快照觀察，不是因果模型。gone／消失不等於獵殺；年度更替以持續個體至少 50% 年齡增加推定。只有完整跨年度資料才可標為 one-year 或 multi-year。</div>
+ <div id="obsstats" class="stats"></div>
+ <h3>棲地成效卡</h3><div class="scroll" style="max-height:320px;margin-bottom:12px"><table id="obsscore"></table></div>
+ <h3>年度／棲地趨勢</h3><div class="scroll" style="max-height:280px;margin-bottom:12px"><table id="obstrend"></table></div>
+ <h3>個體 Cohort Ledger</h3><div class="bar">狀態 <select id="obsstatus"><option value="">全部</option><option value="present">目前存在</option><option value="gone">已消失</option></select> <input id="obsq" placeholder="搜尋物種／ID／獸群"></div><div class="scroll" style="max-height:360px;margin-bottom:12px"><table id="obscohort"></table></div>
+ <h3>方法與證據等級</h3><div id="methodcards" class="methodgrid"></div>
+</section>
+<section id="expedition">
+ <div class="bar">物種 <select id="routesp"><option value="">全部</option></select>
+  近似棲地 <select id="routehab"><option value="">全部</option></select>
+  活動 <select id="routeact"><option>Drink</option><option>Feed</option><option>Sleep</option></select>
+  最多 <input id="routelimit" type="number" min="1" max="50" value="12" style="width:64px"> 站
+  最高 Fitness% <input id="routemax" type="number" min="0" max="100" value="50" style="width:72px">
+  <label><input id="routemature" type="checkbox" checked>只選成熟</label>
+  <label><input id="routerare" type="checkbox" checked>排除稀有</label>
+  起點 <select id="routestart"><option value="player">存檔玩家位置／自動 fallback</option><option value="manual">手動地圖釘</option><option value="center">候選中心</option></select>
+  <button id="routebuild">建立路線</button><button id="routeexport">匯出路線 JSON</button>
+ </div>
+ <div id="routestatus" class="card" style="margin-bottom:10px"></div>
+ <div class="card warn" style="margin-bottom:10px">直線順序不含道路、地形、風向、私人土地、狩獵壓力或動物移動。候選只是觀察輔助，不是獵殺指令。</div>
+ <div id="routestats" class="stats"></div><div class="scroll"><table id="routetable"></table></div>
+</section>
+<section id="map">
+ <div class="bar">物種 <select id="msp"><option value="">全部</option></select>
+  顯示 <select id="mmode"><option value="animals">個體</option><option value="herds">獸群</option><option value="heat">熱區</option></select>
+  需求區 <select id="mzones"><option value="none">不顯示</option><option value="territory">只顯示領域</option><option value="all">領域＋全部需求區</option><option value="active">規劃時間的活動需求區</option></select>
+  <span class="zleg mut"><span style="background:#3aa0ff"></span>飲水<span style="background:#4cd964"></span>覓食<span style="background:#c86bff"></span>休息</span> <span id="zonenote" class="mut"></span>
+  <button id="pinbtn">在地圖點選我的位置</button><button id="pinclear">清除手動位置</button><span id="playernote" class="mut"></span>
+  <button id="measurebtn" title="在地圖上依序點選位置，量測距離；點到動物會自動吸附">📏 量測距離</button><button id="measureundo">復原一點</button><button id="measureclear">清除量測</button>
+  <label title="勾選後，量測路徑從你的位置（存檔或手動）開始"><input type="checkbox" id="mfrom" checked> 從我的位置起算</label>
+  <label><input type="checkbox" id="mflip"> Y 軸反轉</label>
+  <span class="mut">滾輪縮放、拖曳平移，滑鼠移到點上看詳情</span> <span id="mapnote" class="mut"></span></div>
+ <canvas id="mapc" width="900" height="640"></canvas><div id="mtip" class="card" style="position:fixed;display:none;pointer-events:none"></div>
+</section>
+<section id="live"><div class="bar"><span class="mut">開啟 Live 模式後，每次遊戲寫入存檔都會自動重新讀取，並比對：<span style="color:var(--new)">綠色 = 新生成</span>、<span style="color:var(--gone)">紅色 = 消失/死亡（獵殺）</span>。</span><button id="clrlog">清除</button></div><div class="card log" id="log"></div></section>
+<section id="journal">
+ <div class="bar">保護區 <select id="jres"><option value="">全部保護區</option></select>
+  事件 <select id="jtype"><option value="">全部</option><option value="period">期間消失</option><option value="year">年度更替消失</option><option value="spawned">新生成</option></select>
+  <button id="jrebuild">從快照重建日誌</button><button id="jexport">匯出日誌 JSON</button><span id="jnote" class="mut"></span></div>
+ <div class="card warn" style="margin-bottom:10px">「消失」代表兩次存檔之間該動物 ID 不見了：可能是獵殺、自然死亡或年度更替，程式不會斷定是哪一種。若同一次變化中 ≥50% 持續個體年齡增加，就標為「年度更替」。管理品質只計算「期間消失」的已知公獸是否低於當時近似棲地的觀察平均。日誌只寫入程式自己的 <code>journal/</code> 資料夾。</div>
+ <div class="stats" id="jstats"></div>
+ <h3>物種摘要</h3><div class="scroll" style="max-height:260px;margin-bottom:12px"><table id="jsp"></table></div>
+ <h3>存檔變化時間軸</h3><div class="scroll" style="max-height:200px;margin-bottom:12px"><table id="jtl"></table></div>
+ <h3>事件</h3><div class="scroll"><table id="jev"></table></div>
+</section>
+<section id="history">
+ <div class="bar">物種 <select id="trendsp"><option value="">全部物種</option></select>
+  指標 <select id="trendmetric"><option value="total">總數</option><option value="male">公獸數</option><option value="avg_fitness">平均 Fitness</option><option value="high">90% 以上</option><option value="low">50% 以下</option><option value="rare">稀有數</option></select>
+  <button id="refreshhistory">重新整理</button><button id="report">匯出管理報告 JSON</button><span id="historynote" class="mut"></span></div>
+ <div id="healthcards" class="stats"></div>
+ <div class="card" style="margin-bottom:10px"><canvas id="trendc" width="1200" height="300"></canvas></div>
+ <div class="scroll" style="max-height:300px"><table id="historyt"></table></div>
+</section>
+<section id="cmp"><div class="bar">舊快照 <select id="snaps"></select> <button id="docmp">與目前存檔比較</button> <span class="mut" id="cmpinfo"></span></div><div class="scroll" style="max-height:240px;margin-bottom:10px"><table id="cmpst"></table></div><div class="scroll" style="max-height:240px;margin-bottom:10px"><table id="transt"></table></div><div class="scroll"><table id="ct"></table></div></section>
+<section id="tree"><div class="bar"><input id="tq" placeholder="過濾欄位名稱（例：Weight）"><button id="tload">載入結構</button><a id="tdl" class="mut"></a></div><div class="card tree" id="treeout">若沒有辨識到動物，請在這裡找出物種/性別/分數等欄位名稱，並修改 config.json 的 fields 規則。</div></section>
+<section id="glossary"><div class="bar"><input id="glossq" placeholder="搜尋名詞、英文或說明…" style="min-width:260px"> <span id="glosscats" class="bar" style="margin:0"></span> <span class="mut" id="glosscount"></span></div><div id="glosslist" class="glossgrid"></div></section>
+<section id="info"><pre class="card" id="infot"></pre></section>
+</main>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let S=null, cur=null, liveOn=false, liveTimer=null, lastKeys=null, marks={added:new Set(),removed:new Map()}, info={}, catalog={animals:[],reserves:[]}, vault={coverage:0,total_reserves:7,reserves:[]}, mapFocus=null, historyData=null;
+let watched=new Set(JSON.parse(localStorage.getItem('woth-watched')||'[]'));
+let watchMeta=JSON.parse(localStorage.getItem('woth-watch-meta')||'{}');
+const api=async(u)=>{const r=await fetch(u);const j=await r.json();if(j.error)throw new Error(j.error);return j};
+const fmt=(v,d=1)=>v==null||v===''?'':(typeof v==='number'?(Number.isInteger(v)?v:v.toFixed(d)):v);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const stars=a=>a.stars!=null?'★'.repeat(a.stars)+'☆'.repeat(Math.max(0,5-a.stars)):(a.percentile!=null&&a.gender!=='F'?`潛力同種前 ${fmt(Math.max(0.1,100-a.percentile),1)}%`:'');
+const pct=v=>v==null?'':(v*100).toFixed(1)+'%';
+$$('#tabs a').forEach(a=>a.onclick=()=>{$$('#tabs a').forEach(x=>x.classList.toggle('act',x===a));$$('section').forEach(s=>s.classList.toggle('act',s.id===a.dataset.t));if(a.dataset.t==='vault')renderVault();if(a.dataset.t==='map')drawMap();if(a.dataset.t==='manage')renderManage();if(a.dataset.t==='strategy')renderStrategy();if(a.dataset.t==='habitat')renderHabitat();if(a.dataset.t==='observatory')loadObservatory();if(a.dataset.t==='expedition')renderExpedition();if(a.dataset.t==='journal')loadJournal();if(a.dataset.t==='planner')renderPlanner();if(a.dataset.t==='guide')renderCatalog();if(a.dataset.t==='history')loadHistory();if(a.dataset.t==='cmp')loadSnaps();if(a.dataset.t==='glossary')renderGlossary()});
+function status(t,warn){$('#status').innerHTML=warn?`<span class="warn">${esc(t)}</span>`:esc(t)}
+
+async function init(){
+ [info,catalog]=await Promise.all([api('/api/info'),api('/api/catalog')]);
+ $('#catreserve').innerHTML='<option value="">全部七張地圖</option>'+catalog.reserves.map(x=>`<option>${esc(x)}</option>`).join('');
+ const [saves,v]=await Promise.all([api('/api/saves'),api('/api/vault')]);vault=v;renderVault();
+ $('#saves').innerHTML=saves.length?saves.map(s=>`<option value="${esc(s.path)}">${esc(s.name)} — ${new Date(s.mtime*1000).toLocaleString()} (${(s.size/1024).toFixed(0)} KB)</option>`).join(''):'<option value="">（找不到存檔，請手動輸入路徑）</option>';
+ if(!info.dirs.length)status('未找到 %LOCALAPPDATA%\\WayOfTheHunter\\Saved\\SaveGames',1);
+ renderCatalog();loadWoth2();
+ if(saves.length)load();
+}
+function path(){return $('#manual').value.trim()||$('#saves').value}
+async function loadFile(p){if(!p)return;status('讀取中…');try{S=await api('/api/scan?path='+encodeURIComponent(p));cur=p;historyData=null;if(window.resetV4State)resetV4State();lastKeys=new Set(S.animals.map(a=>a.key));render();status(`已讀取 ${S.name}（${S.animals.length} 隻 / ${S.herds.length} 群，${S.parse_ms} ms）`+(S.warning_count?` ⚠ ${S.warning_count} 則警告`:''),!S.animals.length);return true}catch(e){status(e.message,1);return false}}
+async function load(){return loadFile(path())}
+$('#load').onclick=load;$('#saves').onchange=()=>{$('#manual').value='';load()};
+$('#csv').onclick=()=>cur&&(location.href='/api/export.csv?path='+encodeURIComponent(cur));
+
+function A(){const m=$('#mapf').value;return S?S.animals.filter(a=>!m||a.map===m):[]}
+function H(){const m=$('#mapf').value;return S?S.herds.filter(h=>!m||h.map===m):[]}
+const wkey=a=>`${a.map||''}:${a.id}`;
+const isWatched=a=>watched.has(wkey(a));
+function saveWatched(){localStorage.setItem('woth-watched',JSON.stringify([...watched]));localStorage.setItem('woth-watch-meta',JSON.stringify(watchMeta))}
+$('#mapf').onchange=render;
+
+function render(){
+ if(!S)return;
+ for(const a of S.animals)if(isWatched(a))watchMeta[wkey(a)]={species:a.species,species_zh:a.species_zh,fitness:a.fitness,herd_id:a.herd_id,lastSeen:Date.now()};saveWatched();
+ const mv=$('#mapf').value||(S.maps.length===1?S.maps[0]:'');$('#mapf').innerHTML='<option value="">全部地圖</option>'+S.maps.map(m=>`<option ${m===mv?'selected':''}>${esc(m)}</option>`).join('');$('#mapf').value=mv;
+ const an=A(), sp=[...new Set(an.map(a=>a.species))].sort();
+ for(const id of ['#fsp','#msp','#histsp']){const el=$(id),v=el.value;el.innerHTML=(id==='#histsp'?'':`<option value="">${id==='#fsp'?'全部物種':'全部'}</option>`)+sp.map(s=>`<option ${s===v?'selected':''} value="${esc(s)}">${esc(s)} ${esc(zh(s))}</option>`).join('')}
+ if(!$('#histsp').dataset.touched){const top=summary(an)[0];if(top)$('#histsp').value=top.species}
+ renderSum();renderManage();renderStrategy();renderHabitat();renderPlanner();renderCatalog();renderList();renderHerds();drawHist();drawMap();if(window.renderV4Status)renderV4Status();
+ $('#infot').textContent=JSON.stringify({版本:info.version,保護區:S.reserve,玩家位置:S.player_state,需求區對應:S.zone_match,需求區資料:info.zones&&{來源:info.zones.source,授權:info.zones.license,commit:info.zones.source_commit,校正:info.zones.calibration},格式:S.format,資料庫:S.db_info,檔案:S.path,大小:S.size,修改時間:new Date(S.mtime*1000).toLocaleString(),SHA1:S.sha1,壓縮:S.compression,標頭:S.header,快照:S.snapshot,警告:S.warnings},null,2);
+}
+function renderVault(){
+ const rows=vault.reserves||[],available=rows.filter(r=>r.available),total=available.reduce((n,r)=>n+(r.total||0),0);
+ $('#vaultnote').textContent=`${vault.coverage||0}/${vault.total_reserves||7} 張地圖 · 檢查 ${vault.scanned_files||0} 個檔案 · ${vault.error_count||0} 個錯誤`;
+ $('#vaultstats').innerHTML=[['保護區覆蓋',`${vault.coverage||0} / ${vault.total_reserves||7}`],['最後狀態總動物',total||'—'],['唯一族群狀態',vault.unique_states||0],['解析錯誤',vault.error_count||0]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ $('#vaultcards').innerHTML=rows.map((r,i)=>{const expected=(catalog.animals||[]).filter(a=>(a.reserves||[]).includes(r.reserve)).length;if(!r.available)return `<div class="card vcard missing"><h3>${esc(r.reserve)}</h3><span class="badge">未掃描</span><p class="mut">預期 roster：${expected} 種<br>進入此保護區並讓遊戲完成存檔後，再按「重新掃描 Vault」。</p></div>`;const src=r.source==='current'?'目前檔案':'最後看見';return `<div class="card vcard"><h3>${esc(r.reserve)}</h3><span class="badge ${r.source==='current'?'current':''}">${src}</span><div class="vnums"><span><b>${r.total}</b>動物</span><span><b>${r.herds}</b>獸群</span><span><b>${r.species_count}/${expected}</b>物種</span><span><b>${pct(r.avg_fitness)}</b>平均潛力</span><span><b>${r.high80}</b>80%+</span><span><b>${r.rare}</b>稀有</span></div><div class="mut">最後看見：${new Date(r.time*1000).toLocaleString()}<br>健康：${esc(r.health)} · SHA-1 ${esc((r.sha1||'').slice(0,10))}</div><button data-vopen="${i}" style="margin-top:8px">唯讀開啟此狀態</button></div>`}).join('');
+ $$('#vaultcards [data-vopen]').forEach(b=>b.onclick=async()=>{const r=rows[+b.dataset.vopen];$('#manual').value=r.path;if(await loadFile(r.path))$('#tabs a[data-t="sum"]').click()});
+ table('#vaultt',[['保護區','reserve'],['狀態','source_zh'],['最後看見','time','',r=>r.available?new Date(r.time*1000).toLocaleString():'未掃描'],['動物','total','n'],['獸群','herds','n'],['物種','species_count','n'],['公獸樣本','male_known','n'],['平均 Fitness','avg_fitness','n',r=>r.available?pct(r.avg_fitness):'—'],['80%+','high80','n'],['≤50%','low50','n'],['稀有','rare','n'],['健康','health']],rows.map(r=>({...r,source_zh:r.available?(r.source==='current'?'目前檔案':'最後看見'):'未掃描'})),r=>{if(r.available){$('#manual').value=r.path;loadFile(r.path).then(ok=>ok&&$('#tabs a[data-t="sum"]').click())}});
+ const prev=$('#vaultsp').value;$('#vaultsp').innerHTML='<option value="">全部 60 種</option>'+(catalog.animals||[]).map(a=>`<option value="${esc(a.slug)}">${esc(a.name)} ${esc(a.name_zh)}</option>`).join('');$('#vaultsp').value=prev;
+ const animals=(catalog.animals||[]).filter(a=>!prev||a.slug===prev),abbr=['NPV','TRA','AUR','TIK','MAT','LIN','ELK'];
+ const matrix=animals.map(a=>{const x={name:a.name,name_zh:a.name_zh};rows.forEach((r,i)=>{if(!(a.reserves||[]).includes(r.reserve))x['m'+i]='';else if(!r.available)x['m'+i]='未掃描';else{x['m'+i]=(r.species||[]).find(s=>s.slug===a.slug)?.total??0}});return x});
+ const mcols=[['物種','name'],['中文','name_zh'],...rows.map((r,i)=>[abbr[i]||r.reserve,'m'+i,'n'])];
+ table('#vaultmatrix',mcols,matrix);
+}
+$('#vaultsp').oninput=renderVault;
+$('#refreshvault').onclick=async()=>{const b=$('#refreshvault');b.disabled=true;$('#vaultnote').textContent='掃描中…';try{vault=await api('/api/vault?t='+Date.now());renderVault()}catch(e){$('#vaultnote').textContent=e.message}finally{b.disabled=false}};
+$('#exportvault').onclick=()=>{const clean={version:info.version,generated_at:vault.generated_at,coverage:vault.coverage,total_reserves:vault.total_reserves,reserves:vault.reserves,error_count:vault.error_count};const u=URL.createObjectURL(new Blob([JSON.stringify(clean,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='woth_reserve_vault.json';a.click();URL.revokeObjectURL(u)};
+function zh(s){const a=S.animals.find(x=>x.species===s);return a&&a.species_zh!==s?a.species_zh:''}
+function summary(an){const m={};for(const a of an){const s=m[a.species]??={species:a.species,zh:a.species_zh,tier:a.tier,total:0,alive:0,M:0,F:0,U:0,Young:0,Adult:0,Mature:0,max:null,sum:0,n:0,fsum:0,fn:0,herds:new Set()};s.total++;if(a.age_stage)s[a.age_stage]++;if(a.variant)s.rare=(s.rare||0)+1;if(a.fitness!=null){s.mf=Math.max(s.mf??0,a.fitness);s.fsum+=a.fitness;s.fn++}if(!a.dead)s.alive++;s[a.gender==='M'?'M':a.gender==='F'?'F':'U']++;if(a.score!=null){s.max=Math.max(s.max??-1e9,a.score);s.sum+=a.score;s.n++}s.herds.add(a.herd_index)}return Object.values(m).sort((a,b)=>b.total-a.total)}
+function renderSum(){
+ const an=A(),sm=summary(an);
+ $('#stats').innerHTML=[['動物總數',an.length],['存活',an.filter(a=>!a.dead).length],['獸群',H().length],['物種',sm.length],['公 / 母',`${an.filter(a=>a.gender==='M').length} / ${an.filter(a=>a.gender==='F').length}`]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#sumt',[['物種','species'],['中文','zh'],['等級','tier','n'],['總數','total','n'],['幼年','Young','n'],['成年','Adult','n'],['成熟','Mature','n'],['公','M','n'],['母','F','n'],['獸群','hc','n'],['稀有','rare','n'],['平均潛力','af','n',r=>pct(r.af)],['最高潛力','mf','n',r=>pct(r.mf)]],sm.map(s=>({...s,hc:s.herds.size,af:s.fn?s.fsum/s.fn:null})),r=>{$('#fsp').value=r.species;$('#tabs a[data-t="list"]').click();renderList()});
+}
+function herdAnalytics(){
+ const hi=Math.max(0,Math.min(100,+$('#highfit').value||90))/100,lo=Math.max(0,Math.min(100,+$('#lowfit').value||50))/100;
+ const by=new Map;for(const a of A()){if(a.herd_index<0)continue;let x=by.get(a.herd_index);if(!x){const h=H().find(h=>h.index===a.herd_index)||{};x={...h,fit:[],rare:0,high:0,low:0};by.set(a.herd_index,x)}if(a.fitness!=null){x.fit.push(a.fitness);if(a.fitness>=hi)x.high++;if(a.fitness<=lo)x.low++}if(a.variant)x.rare++}
+ return [...by.values()].map(h=>{h.avgfit=h.fit.length?h.fit.reduce((a,b)=>a+b,0)/h.fit.length:null;h.maxfit=h.fit.length?Math.max(...h.fit):null;h.advice=h.low?`觀察 ${h.low} 隻低潛力公獸`:h.high?`保留 ${h.high} 隻高潛力公獸`:h.males?'持續觀察':'目前無公獸';return h}).sort((a,b)=>b.low-a.low||b.high-a.high||b.size-a.size);
+}
+function renderManage(){
+ if(!S)return;const hi=(+$('#highfit').value||90)/100,lo=(+$('#lowfit').value||50)/100,an=A(),males=an.filter(a=>a.fitness!=null),rows=herdAnalytics();
+ const high=males.filter(a=>a.fitness>=hi).length,low=males.filter(a=>a.fitness<=lo).length,rare=an.filter(a=>a.variant).length;
+ $('#mstats').innerHTML=[['高潛力公獸',high],['低潛力觀察',low],['稀有變種',rare],['已關注',an.filter(isWatched).length],['有公獸資料的獸群',rows.filter(h=>h.fit.length).length]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#mgt',[['獸群','id'],['物種','species'],['中文','species_zh'],['數量','size','n'],['公/母','ratio','',h=>`${h.males??0} / ${h.females??0}`],['平均潛力','avgfit','n',h=>pct(h.avgfit)],['最高潛力','maxfit','n',h=>pct(h.maxfit)],['高潛力','high','n'],['低潛力','low','n'],['稀有','rare','n'],['建議','advice','',h=>`<span class="${h.low?'advice-low':h.high?'advice-good':''}">${esc(h.advice)}</span>`]],rows,h=>{const a=A().find(a=>a.herd_index===h.index);if(a){$('#fsp').value=a.species;$('#fq').value=h.id;$('#tabs a[data-t="list"]').click();renderList()}});
+ const present=new Map(an.map(a=>[wkey(a),a])),wr=[...watched].map(k=>{const a=present.get(k),m=watchMeta[k]||{};return {...m,key:k,status:a?'仍存在':'已消失',_animal:a||null,species:a?.species||m.species||'?',species_zh:a?.species_zh||m.species_zh||'',fitness:a?.fitness??m.fitness,herd_id:a?.herd_id||m.herd_id||'',lastSeen:m.lastSeen||''}});
+ table('#watcht',[['狀態','status','',r=>`<span class="${r.status==='仍存在'?'advice-good':'advice-low'}">${r.status}</span>`],['物種','species'],['中文','species_zh'],['Fitness','fitness','n',r=>pct(r.fitness)],['獸群','herd_id'],['最後看見','lastSeen','mut',r=>r.lastSeen?new Date(r.lastSeen).toLocaleString():''],['識別碼','key','mut']],wr,r=>r._animal?showDetail(r._animal):null);
+}
+const bandMeta={
+ 'very-low':['極低','band-vl'],'low':['低','band-l'],'moderate':['中等','band-m'],
+ 'high':['高','band-h'],'very-high':['極高','band-vh']
+};
+function fitBand(v){if(v==null)return null;return v<.2?'very-low':v<.4?'low':v<.6?'moderate':v<.8?'high':'very-high'}
+function bandChip(v){const b=fitBand(v),m=bandMeta[b];return m?`<span class="bandchip ${m[1]}">${m[0]} ${pct(v)}</span>`:'—'}
+function strategyClass(a,hi,lo){
+ if(a.variant)return '稀有關注';
+ if(a.gender!=='M'||a.fitness==null)return '持續觀察';
+ if(a.fitness<=lo)return '低潛力觀察';
+ if(a.fitness>=hi&&a.age_stage==='Mature')return '成熟高潛力';
+ if(a.fitness>=hi&&(a.age_stage==='Young'||a.age_stage==='Adult'))return '成長保護';
+ return '持續觀察';
+}
+function renderStrategy(){
+ if(!S)return;
+ const hi=(+$('#highfit').value||90)/100,lo=(+$('#lowfit').value||50)/100,hour=+$('#gamehour').value;
+ $('#strathi').textContent=pct(hi);$('#stratlo').textContent=pct(lo);$('#strattime').textContent=clock(hour);
+ const old=$('#stratsp').value,sp=[...new Set(A().map(a=>a.species))].sort();
+ $('#stratsp').innerHTML='<option value="">全部物種</option>'+sp.map(x=>`<option value="${esc(x)}">${esc(x)} ${esc(zh(x))}</option>`).join('');$('#stratsp').value=sp.includes(old)?old:'';
+ const selected=$('#stratsp').value,cls=$('#stratclass').value,showAll=$('#stratall').checked;
+ const base=A().filter(a=>!selected||a.species===selected),males=base.filter(a=>a.gender==='M'&&a.fitness!=null);
+ const bands={'very-low':0,low:0,moderate:0,high:0,'very-high':0};for(const a of males)bands[fitBand(a.fitness)]++;
+ const classified=base.map(a=>({...a,strategy:strategyClass(a,hi,lo)}));
+ const cc={};for(const a of classified)cc[a.strategy]=(cc[a.strategy]||0)+1;
+ $('#stratstats').innerHTML=[
+  ['極低 0–19.99%',bands['very-low']],['低 20–39.99%',bands.low],['中等 40–59.99%',bands.moderate],['高 60–79.99%',bands.high],['極高 80–100%',bands['very-high']],
+  ['低潛力觀察',cc['低潛力觀察']||0],['成長保護',cc['成長保護']||0],['成熟高潛力',cc['成熟高潛力']||0],['稀有關注',cc['稀有關注']||0]
+ ].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ const groups={};for(const a of A().filter(a=>a.gender==='M'&&a.fitness!=null)){if(selected&&a.species!==selected)continue;const g=groups[a.species]??={species:a.species,zh:a.species_zh,n:0,sum:0,vl:0,l:0,m:0,h:0,vh:0,low:0,high:0};g.n++;g.sum+=a.fitness;const b=fitBand(a.fitness);g[{ 'very-low':'vl',low:'l',moderate:'m',high:'h','very-high':'vh'}[b]]++;if(a.fitness<=lo)g.low++;if(a.fitness>=hi)g.high++}
+ const sr=Object.values(groups).map(g=>{const k=S.species_info?.[g.species],ac=activityAt(k,hour),nd=nextActivityIn(k,hour,'Drink');return {...g,avg:g.sum/g.n,activity:ac?`${ac.activity}／${actZh[ac.activity]}`:'無資料',nextDrink:nd}}).sort((a,b)=>a.avg-b.avg);
+ table('#stratsum',[['物種','species'],['中文','zh'],['公獸樣本','n','n'],['觀察平均','avg','n',r=>bandChip(r.avg)],['極低','vl','n'],['低','l','n'],['中等','m','n'],['高','h','n'],['極高','vh','n'],['低門檻','low','n'],['高門檻','high','n'],['目前活動','activity'],['下一飲水','nextDrink','n',r=>r.nextDrink==null?'無':r.nextDrink===0?'現在':`${fmt(r.nextDrink,0)} 小時後`]],sr,r=>{$('#stratsp').value=r.species;renderStrategy()});
+ const pri={'稀有關注':0,'低潛力觀察':1,'成熟高潛力':2,'成長保護':3,'持續觀察':4};
+ let qr=classified.filter(a=>(showAll||cls==='持續觀察'||a.strategy!=='持續觀察')&&(!cls||a.strategy===cls)).map(a=>{const k=S.species_info?.[a.species],ac=activityAt(k,hour);return {...a,band:fitBand(a.fitness),activity:ac?`${ac.activity}／${actZh[ac.activity]}`:'無資料',nextDrink:nextActivityIn(k,hour,'Drink')}}).sort((a,b)=>pri[a.strategy]-pri[b.strategy]||(a.fitness??2)-(b.fitness??2));
+ table('#stratq',[['分類','strategy','',r=>`<span class="${r.strategy==='成長保護'||r.strategy==='成熟高潛力'?'advice-good':r.strategy==='低潛力觀察'?'advice-low':'watch'}">${esc(r.strategy)}</span>`],['物種','species'],['中文','species_zh'],['性別','gender'],['生命階段','age_stage','',r=>r.age_stage?`${esc(r.age_stage)}／${esc(r.age_stage_zh)}`:'未知'],['Fitness','fitness','n',r=>bandChip(r.fitness)],['目前活動','activity'],['下一飲水','nextDrink','n',r=>r.nextDrink==null?'無':r.nextDrink===0?'現在':`${fmt(r.nextDrink,0)} 小時後`],['獸群','herd_id'],['X','x','n',r=>fmt(r.x,0)],['Y','y','n',r=>fmt(r.y,0)],['ID','id','mut',r=>esc(String(r.id).slice(0,10))]],qr,a=>{$('#fsp').value=a.species;$('#tabs a[data-t="list"]').click();renderList();showDetail(a)});
+}
+['#stratsp','#stratclass','#stratall'].forEach(s=>$(s).oninput=renderStrategy);
+['#highfit','#lowfit'].forEach(s=>$(s).oninput=()=>{renderManage();renderStrategy();renderPlanner();renderList()});
+const actZh={Drink:'飲水',Feed:'覓食',Sleep:'休息'};
+const clock=h=>String((Math.round(h)+24)%24).padStart(2,'0')+':00';
+function activityAt(k,h){
+ const s=k?.schedule||[];if(!s.length)return null;h=(+h+24)%24;let i=-1;for(let j=0;j<s.length;j++)if(s[j].time<=h)i=j;if(i<0)i=s.length-1;
+ const cur=s[i],n=s[(i+1)%s.length];let start=cur.time;if(start>h)start-=24;let end=n.time;if(end<=start)end+=24;if(end<=h)end+=24;
+ return {activity:cur.activity,start:(start+24)%24,end:end%24,next:n.activity,nextIn:end-h};
+}
+function nextActivityIn(k,h,want){const c=activityAt(k,h);if(c?.activity===want)return 0;const a=(k?.schedule||[]).filter(x=>x.activity===want).map(x=>(x.time-h+24)%24);return a.length?Math.min(...a):null}
+function renderPlanner(){
+ if(!S)return;const hour=+$('#gamehour').value,filter=$('#activityf').value,sort=$('#plannersort').value,hi=(+$('#highfit').value||90)/100,lo=(+$('#lowfit').value||50)/100;
+ $('#gamehourlabel').textContent=clock(hour);const sm=summary(A()),rows=sm.map(s=>{const k=S.species_info?.[s.species],a=activityAt(k,hour),nd=nextActivityIn(k,hour,'Drink');return {...s,info:k,activity:a?.activity||'Unknown',window:a?`${clock(a.start)}–${clock(a.end)}`:'無資料',next:a?`${a.next}／${actZh[a.next]}（${fmt(a.nextIn,0)} 小時後）`:'無資料',nextDrink:nd,high:A().filter(x=>x.species===s.species&&x.fitness!=null&&x.fitness>=hi).length,low:A().filter(x=>x.species===s.species&&x.fitness!=null&&x.fitness<=lo).length,rare:A().filter(x=>x.species===s.species&&x.variant).length,hc:s.herds.size,habitat:k?.primary_habitat?.join('、')||'無資料'};}).filter(r=>!filter||r.activity===filter);
+ if(sort==='drink')rows.sort((a,b)=>(a.nextDrink??99)-(b.nextDrink??99)||a.species.localeCompare(b.species));else if(sort==='high')rows.sort((a,b)=>b.high-a.high||a.species.localeCompare(b.species));else rows.sort((a,b)=>a.activity.localeCompare(b.activity)||a.species.localeCompare(b.species));
+ const counts={Drink:0,Feed:0,Sleep:0};for(const r of rows)if(counts[r.activity]!=null)counts[r.activity]+=r.total;
+ $('#plannerstats').innerHTML=[['飲水中的動物',counts.Drink],['覓食中的動物',counts.Feed],['休息中的動物',counts.Sleep],['符合物種',rows.length]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#plannert',[['物種','species'],['中文','zh'],['目前活動','activity','',r=>`${esc(r.activity)}／${esc(actZh[r.activity]||'未知')}`],['時段','window'],['下一活動','next'],['下一飲水','nextDrink','n',r=>r.nextDrink==null?'無飲水排程':r.nextDrink===0?'現在':`${fmt(r.nextDrink,0)} 小時後`],['需求區（目前活動）','zn','n',r=>zoneCount(speciesSlug(r.species),r.activity)],['數量','total','n'],['獸群','hc','n'],['高潛力','high','n'],['低潛力','low','n'],['稀有','rare','n'],['主要棲地','habitat']],rows,r=>{$('#msp').value=r.species;$('#mmode').value='heat';$('#mzones').value='active';zoneFocus=null;$('#tabs a[data-t="map"]').click()});
+}
+['#activityf','#plannersort'].forEach(s=>$(s).oninput=renderPlanner);
+$('#gamehour').oninput=()=>{renderPlanner();renderStrategy();renderCatalog()};
+
+function renderCatalog(){
+ const all=catalog.animals||[],reserve=$('#catreserve').value,tier=$('#cattier').value,act=$('#catact').value,q=$('#catq').value.trim().toLowerCase(),hour=+$('#gamehour').value;
+ $('#cattime').textContent=clock(hour);
+ const present=new Map;
+ for(const a of (S?.animals||[])){if(!a.knowledge_slug)continue;const z=present.get(a.knowledge_slug)||{count:0,species:a.species};z.count++;present.set(a.knowledge_slug,z)}
+ let rows=all.map(k=>{const a=activityAt(k,hour),p=present.get(k.slug);return {...k,current_activity:a?.activity||'Unknown',activity_window:a?`${clock(a.start)}–${clock(a.end)}`:'無資料',next_drink:nextActivityIn(k,hour,'Drink'),current_count:p?.count||0,current_species:p?.species||'',reserves_text:(k.reserves||[]).join('、'),habitats:[...(k.primary_habitat||[]),...(k.secondary_habitat||[])].join('、'),energy:k.hit_energy_j?`${fmt(k.hit_energy_j[0],0)}–${fmt(k.hit_energy_j[1],0)} J`:'無資料'};})
+  .filter(r=>(!reserve||r.reserves.includes(reserve))&&(!tier||String(r.tier)===tier)&&(!act||r.current_activity===act)&&(!q||[r.name,r.name_zh,r.latin,r.slug].join(' ').toLowerCase().includes(q)))
+  .sort((a,b)=>a.tier-b.tier||a.name.localeCompare(b.name));
+ const current=rows.reduce((n,r)=>n+(r.current_count>0),0),mapCount=new Set(rows.flatMap(r=>r.reserves)).size;
+ $('#catstats').innerHTML=[['百科物種',all.length],['篩選結果',rows.length],['涵蓋地圖',mapCount],['目前存檔有此物種',current]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#catt',[['物種','name'],['中文','name_zh'],['學名','latin','mut'],['保護區','reserves_text'],['Tier','tier','n'],['目前活動','current_activity','',r=>`${esc(r.current_activity)}／${esc(actZh[r.current_activity]||'未知')}<br><span class="mut">${esc(r.activity_window)}</span>`],['下一飲水','next_drink','n',r=>r.next_drink==null?'無':r.next_drink===0?'現在':`${fmt(r.next_drink,0)} 小時後`],['棲地','habitats'],['Trophy','trophy_type'],['建議命中能量','energy'],['目前存檔','current_count','n',r=>r.current_count?`<b>${r.current_count}</b>`:'—']],rows,showCatalogDetail);
+}
+function showCatalogDetail(k){
+ const d=$('#catdetail');d.style.display='block';
+ const ranges=(k.trophy_ranges||[]).map((r,i)=>`${i+1}★ ${r[0]}–${r[1]}`).join(' · ');
+ const ages=['Young','Adult','Mature'].map(x=>{const z=k.stages?.[x];return z?`<tr><td>${x}／${({Young:'幼年',Adult:'成年',Mature:'成熟'})[x]}</td><td>公 ${z.M.age.join('–')} 年 · ${esc(z.M.weight_text)}</td><td>母 ${z.F.age.join('–')} 年 · ${esc(z.F.weight_text)}</td></tr>`:''}).join('');
+ const sched=(k.schedule||[]).map(e=>`${clock(e.time)} ${e.activity}/${actZh[e.activity]}`).join(' → ');
+ const now=activityAt(k,+$('#gamehour').value),canMap=k.current_count>0;
+ d.innerHTML=`<div class="bar"><b>${esc(k.name)}　${esc(k.name_zh)}</b><i>${esc(k.latin)}</i><span>Tier ${esc(k.tier)} · Trophy ${esc(k.trophy_type)} · 命中能量 ${esc(k.energy)}</span>${canMap?'<button id="catmap">在目前存檔開啟熱區</button>':''}<button id="closecat">關閉</button></div><div><b>保護區：</b>${esc(k.reserves_text)}<br><b>棲地：</b>${esc(k.habitats||'無資料')}<br><b>24 小時作息：</b>${esc(sched)}<br><b>目前 ${clock(+$('#gamehour').value)}：</b>${now?`${esc(now.activity)}/${esc(actZh[now.activity])}（${clock(now.start)}–${clock(now.end)}）`:'無資料'}<br><b>Trophy 五段範圍：</b>${esc(ranges)}</div><table style="margin-top:8px"><thead><tr><th>生命階段</th><th>公</th><th>母</th></tr></thead><tbody>${ages}</tbody></table><div class="mut" style="margin-top:8px">體重為公開階段範圍，不是個體精確體重；保護區名單不等於精確 need-zone。　<a href="${esc(k.source)}" target="_blank" rel="noreferrer">物種資料來源</a></div>`;
+ $('#closecat').onclick=()=>d.style.display='none';
+ if(canMap)$('#catmap').onclick=()=>{$('#msp').value=k.current_species;$('#mmode').value='heat';$('#tabs a[data-t="map"]').click()};
+}
+['#catq','#catreserve','#cattier','#catact'].forEach(s=>$(s).oninput=()=>{$('#catdetail').style.display='none';renderCatalog()});
+let sortState={};
+function table(sel,cols,rows,onclick,rowcls){
+ const st=sortState[sel];if(st){rows=[...rows].sort((a,b)=>{const x=a[st.k],y=b[st.k];return (x==null)-(y==null)||(x>y?1:x<y?-1:0)*st.d})}
+ const t=$(sel);t.innerHTML=`<thead><tr>${cols.map(c=>`<th class="${c[2]||''}" data-k="${c[1]}">${c[0]}${st&&st.k===c[1]?(st.d>0?' ▲':' ▼'):''}</th>`).join('')}</tr></thead><tbody>${rows.slice(0,3000).map((r,i)=>`<tr data-i="${i}" class="${rowcls?rowcls(r):''}">${cols.map(c=>`<td class="${c[2]||''}">${c[3]?c[3](r):esc(fmt(r[c[1]]))}</td>`).join('')}</tr>`).join('')}</tbody>`;
+ t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortState[sel]={k,d:st&&st.k===k?-st.d:-1};table(sel,cols,rows,onclick,rowcls)});
+ if(onclick)t.querySelectorAll('tbody tr').forEach(tr=>tr.onclick=()=>onclick(rows[tr.dataset.i]));
+}
+const ACOLS=[['關注','watched','watch',a=>isWatched(a)?'★':'☆'],['物種','species'],['中文','species_zh'],['性別','gender'],['年齡','age','n',a=>`${fmt(a.age,0)} 年`],['生命階段','age_stage','',a=>a.age_stage?`${esc(a.age_stage)}／${esc(a.age_stage_zh)}`:'未知'],['階段體重範圍','stage_weight_range'],['潛力排名','percentile','star',stars],['Fitness 潛力','fitness','n',a=>pct(a.fitness)],['稀有','variant_zh'],['獸群','herd_id'],['地圖','map'],['X','x','n',a=>fmt(a.x,0)],['Y','y','n',a=>fmt(a.y,0)],['資料信心','knowledge_confidence','mut'],['ID','id','mut',a=>esc(String(a.id).slice(0,10))]];
+const DISTCOL=['現在距離我','distance_m','n',a=>a.distance_m==null?'—':WothMeasure.fmtDist(a.distance_m)];
+const LCOLS=[...ACOLS.slice(0,12),DISTCOL,...ACOLS.slice(12)];
+function rowcls(a){return marks.removed.has(a.key)?'gone':marks.added.has(a.key)?'new':''}
+function toggleWatch(a){const k=wkey(a);if(watched.has(k)){watched.delete(k);delete watchMeta[k]}else{watched.add(k);watchMeta[k]={species:a.species,species_zh:a.species_zh,fitness:a.fitness,herd_id:a.herd_id,lastSeen:Date.now()}}saveWatched();showDetail(a);renderList();renderManage();drawMap()}
+function showDetail(a){
+ const d=$('#detail');d.style.display='block';d._animal=a;
+ const k=S.species_info?.[a.species],proxy=a.knowledge_confidence==='proxy';const ranges=k?.trophy_ranges?.map((r,i)=>`${i+1}★ ${r[0]}–${r[1]}`).join(' · ')||'無資料';const energy=k?.hit_energy_j?`${fmt(k.hit_energy_j[0],0)}–${fmt(k.hit_energy_j[1],0)} J`:'無資料';const sched=k?.schedule?.map(e=>`${clock(e.time)} ${e.activity}/${actZh[e.activity]}`).join(' → ')||'無資料';const nowAct=activityAt(k,+$('#gamehour').value);
+ const ages=k?.stages?['Young','Adult','Mature'].map(x=>{const z=k.stages[x];return `${x}/${({Young:'幼年',Adult:'成年',Mature:'成熟'})[x]}：公 ${z.M.age.join('–')} 年、母 ${z.F.age.join('–')} 年`}).join('<br>'):'無資料';
+ d.innerHTML=`<div class="bar"><b>${esc(a.species)} ${esc(a.species_zh)}</b><span>${a.gender} · ${esc(a.age_label)} · 階段體重範圍 ${esc(a.stage_weight_range||'無資料')} · Fitness 潛力 ${pct(a.fitness)}</span>${a.variant?`<span class="watch">◆ ${esc(a.variant_zh)}</span>`:''}${proxy?'<span class="warn">⚠ 年齡表使用相近亞種 proxy</span>':''}<span class="mut">ID ${esc(a.id)} · 獸群 ${esc(a.herd_id)} · X ${fmt(a.x,0)} / Y ${fmt(a.y,0)}</span>${detailV3(a)}<button id="watchbtn">${isWatched(a)?'★ 取消關注':'☆ 加入關注'}</button><button id="gotomap">在地圖置中</button><button id="closedetail">關閉</button></div>${k?`<div style="border-top:1px solid var(--line);padding-top:8px"><b>物種知識卡</b>　Tier ${esc(k.tier)} · Trophy：${esc(k.trophy_type)} · 建議命中能量 ${esc(energy)}<br><span class="mut">主要棲地：</span>${esc(k.primary_habitat.join('、')||'無資料')}　<span class="mut">次要棲地：</span>${esc(k.secondary_habitat.join('、')||'無資料')}<br><span class="mut">年齡表：</span><br>${ages}<br><span class="mut">Trophy 五段範圍：</span>${esc(ranges)}<br><span class="mut">24 小時作息：</span>${esc(sched)}<br><span class="mut">規劃時間 ${clock(+$('#gamehour').value)}：</span>${nowAct?`${esc(nowAct.activity)}/${esc(actZh[nowAct.activity])}（${clock(nowAct.start)}–${clock(nowAct.end)}）`:'無資料'}　<a href="${esc(k.source)}" target="_blank" rel="noreferrer">資料來源</a><br><span class="mut">注意：體重是公開階段範圍，不是這隻動物的精確體重；Trophy 範圍也不代表目前分數。作息不保證整段時間停留於同一 need zone。</span></div>`:''}`;
+ $('#watchbtn').onclick=()=>toggleWatch(a);if($('#zonebtn'))$('#zonebtn').onclick=()=>gotoZones(a);$('#gotomap').onclick=()=>gotoMap(a);$('#closedetail').onclick=()=>d.style.display='none';
+}
+function gotoMap(a){$('#msp').value=a.species;$('#mmode').value='animals';mapFocus=a;$('#tabs a[data-t="map"]').click()}
+function renderList(){
+ const rr=$('#frare').checked,mf=parseFloat($('#ffit').value);const sp=$('#fsp').value,sx=$('#fsex').value,ag=$('#fage').value,ms=parseFloat($('#fscore').value),al=$('#falive').checked,q=$('#fq').value.toLowerCase(),quality=$('#fquality').value,hi=(+$('#highfit').value||90)/100,lo=(+$('#lowfit').value||50)/100;
+ let rows=A().filter(a=>(!sp||a.species===sp)&&(!sx||a.gender===sx)&&(!ag||(ag==='unknown'?!a.age_stage:a.age_stage===ag))&&(isNaN(ms)||(a.score??-1)>=ms)&&(!al||!a.dead)&&(!rr||a.variant)&&(isNaN(mf)||(a.fitness??-1)*100>=mf)&&(!q||JSON.stringify([a.id,a.herd_id,a.fields]).toLowerCase().includes(q))&&(!quality||(quality==='high'&&a.fitness!=null&&a.fitness>=hi)||(quality==='low'&&a.fitness!=null&&a.fitness<=lo)||(quality==='rare'&&a.variant)||(quality==='watch'&&isWatched(a))));
+ if(liveOn||marks.removed.size)rows=rows.concat([...marks.removed.values()].filter(a=>!sp||a.species===sp));
+ const me=myPos();rows=rows.map(a=>({...a,distance_m:me&&Number.isFinite(a.x)&&Number.isFinite(a.y)?WothMeasure.dist(me,a):null}));
+ $('#lcount').textContent=`${rows.length} 筆`;
+ table('#lt',LCOLS,rows,showDetail,rowcls);
+}
+['#fsp','#fsex','#fage','#fscore','#falive','#fq','#frare','#ffit','#fquality'].forEach(s=>$(s).oninput=renderList);
+function renderHerds(){const aa=new Map(herdAnalytics().map(h=>[h.index,h]));table('#ht',[['獸群 ID','id'],['物種','species'],['中文','species_zh'],['地圖','map'],['數量','size','n'],['公','males','n'],['母','females','n'],['平均潛力','avgfit','n',h=>pct(h.avgfit)],['最高潛力','maxfit','n',h=>pct(h.maxfit)],['近似棲地','habitat_zh','',h=>esc(h.habitat_zh||'—')],['區域','area'],['領域對應','territory_dist_m','n',h=>matchLabel(h)],['X','x','n',h=>fmt(h.x,0)],['Y','y','n',h=>fmt(h.y,0)]],H().map(h=>({...h,...(aa.get(h.index)||{})})),h=>{$('#fq').value=h.id;$('#fsp').value='';$('#tabs a[data-t="list"]').click();renderList()})}
+
+function drawHist(){
+ const c=$('#hist'),g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);const sp=$('#histsp').value;
+ let v=A().filter(a=>a.species===sp&&a.score!=null&&a.score>0).map(a=>a.score);let unit='';if(!v.length){v=A().filter(a=>a.species===sp&&a.fitness!=null).map(a=>a.fitness*100);unit='Fitness % (公)'}g.fillStyle='#9aa39f';g.font='12px sans-serif';
+ if(!v.length){g.fillText('此物種沒有分數/Fitness 資料',20,30);return}
+ const mn=Math.min(...v),mx=Math.max(...v),B=20,w=(mx-mn)/B||1,b=Array(B).fill(0);v.forEach(x=>b[Math.min(B-1,Math.floor((x-mn)/w))]++);
+ const top=Math.max(...b),W=c.width-40,Hh=c.height-40;b.forEach((n,i)=>{const h=n/top*Hh;g.fillStyle='#c9a24a';g.fillRect(30+i*W/B,10+Hh-h,W/B-2,h)});
+ g.fillStyle='#9aa39f';g.fillText(fmt(mn),30,c.height-12);g.fillText(fmt(mx),c.width-50,c.height-12);g.fillText(`${unit} n=${v.length}  max=${fmt(mx)}`,c.width-230,20);
+}
+$('#histsp').onchange=()=>{$('#histsp').dataset.touched=1;drawHist()};
+
+// ---- map
+let view={s:1,ox:0,oy:0},pts=[];const MAP_PAD=30;const COLORS=['#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4','#46f0f0','#f032e6','#bcf60c','#fabebe','#008080','#e6beff','#9a6324','#fffac8','#aaffc3','#808000','#ffd8b1'];
+const mapImgs={};
+function drawMap(){
+ const c=$('#mapc');if(!S||!c.offsetParent&&!$('#map').classList.contains('act'))return;
+ c.width=Math.min(1400,innerWidth-40);c.height=Math.max(400,innerHeight-230);
+ const g=c.getContext('2d');g.fillStyle='#0d1012';g.fillRect(0,0,c.width,c.height);
+ const sp=$('#msp').value,mode=$('#mmode').value,byHerd=mode==='herds',flip=$('#mflip').checked;
+ let items=byHerd?H().filter(h=>!sp||h.species===sp).map(h=>({...h,_h:1})):A().filter(a=>(!sp||a.species===sp)&&(!a.dead||marks.removed.has(a.key)));
+ if(!byHerd)items=items.concat([...marks.removed.values()]);
+ items=items.filter(a=>a.x!=null&&a.y!=null);
+ const m=$('#mapf').value||(S.db_info&&S.db_info.reserve)||(S.maps.length===1?S.maps[0]:'');const cal=m&&info.maps&&info.maps[m];$('#mapnote').textContent=cal&&cal.image?`底圖：${m} · ${items.length} 個位置`:`無底圖校正 · ${items.length} 個位置`;
+ let x0,x1,y0,y1;if(cal){x0=cal.x_min;x1=cal.x_max;y0=cal.y_min;y1=cal.y_max}else{const all=A().filter(a=>a.x!=null&&a.y!=null),xs=all.map(a=>a.x),ys=all.map(a=>a.y);x0=Math.min(...xs);x1=Math.max(...xs);y0=Math.min(...ys);y1=Math.max(...ys)}
+ if(!items.length){g.fillStyle='#9aa39f';g.fillText('沒有座標資料',20,30);if(!cal)return}
+ const pad=MAP_PAD,baseSc=Math.min((c.width-2*pad)/((x1-x0)||1),(c.height-2*pad)/((y1-y0)||1));let sc=baseSc*view.s;
+ if(mapFocus){view.s=4;sc=baseSc*view.s;view.ox=c.width/2-(pad+(mapFocus.x-x0)*sc);view.oy=c.height/2-(pad+(flip?y1-mapFocus.y:mapFocus.y-y0)*sc);mapFocus=null}
+ const tx=x=>pad+(x-x0)*sc+view.ox,ty=y=>flip?pad+(y1-y)*sc+view.oy:pad+(y-y0)*sc+view.oy;
+ window.mapTransform={tx,ty,invx:px=>(px-pad-view.ox)/sc+x0,invy:py=>flip?y1-(py-pad-view.oy)/sc:(py-pad-view.oy)/sc+y0};
+ if(cal&&cal.image){let im=mapImgs[cal.image];if(!im){im=mapImgs[cal.image]=new Image();im.onload=drawMap;im.src=cal.image}if(im.complete&&im.naturalWidth)g.drawImage(im,tx(x0),Math.min(ty(y0),ty(y1)),(x1-x0)*sc,(y1-y0)*sc)}
+ const spl=[...new Set(items.map(a=>a.species))].sort();pts=[];drawZones(g,tx,ty,sp);
+ if(mode==='heat'){g.save();g.globalCompositeOperation='lighter';for(const a of items){const X=tx(a.x),Y=ty(a.y),r=24;const gr=g.createRadialGradient(X,Y,0,X,Y,r);gr.addColorStop(0,'rgba(255,45,20,.20)');gr.addColorStop(.45,'rgba(255,190,0,.10)');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(X-r,Y-r,r*2,r*2)}g.restore()}
+ for(const a of items){const X=tx(a.x),Y=ty(a.y),col=COLORS[spl.indexOf(a.species)%COLORS.length];g.beginPath();
+  if(marks.removed.has(a.key)){g.strokeStyle='#f85149';g.lineWidth=2;g.moveTo(X-5,Y-5);g.lineTo(X+5,Y+5);g.moveTo(X+5,Y-5);g.lineTo(X-5,Y+5);g.stroke()}
+  else if(mode!=='heat'){g.fillStyle=col;g.arc(X,Y,a._h?3+Math.sqrt(a.size)*2:3,0,7);g.fill();if(marks.added.has(a.key)){g.strokeStyle='#3fb950';g.lineWidth=2;g.stroke()}if(!a._h&&isWatched(a)){g.strokeStyle='#fff176';g.lineWidth=2;g.beginPath();g.arc(X,Y,7,0,7);g.stroke()}}
+  pts.push([X,Y,a])}
+ if(window.drawV4Overlay)drawV4Overlay(g,tx,ty);
+ spl.forEach((s,i)=>{g.fillStyle=COLORS[i%COLORS.length];g.fillRect(12,12+i*18,10,10);g.fillStyle='#e6e2d6';g.fillText(`${s} ${zh(s)}`,28,21+i*18)});
+ if(window.drawMeasureOverlay)drawMeasureOverlay(g,tx,ty);
+ if(cal)drawScaleBar(g,c,sc,baseSc,x1-x0,y1-y0);
+}
+
+function drawScaleBar(g,c,sc,baseSc,wCm,hCm){
+ const pxPerM=sc*100,ns=WothMeasure.niceScale(pxPerM,190);if(!ns)return;
+ g.save();g.font='11px sans-serif';g.textBaseline='alphabetic';
+ const W=Math.max(ns.px+40,180),H=64,X=12,Y=c.height-H-12;
+ g.fillStyle='rgba(15,18,20,.85)';g.fillRect(X,Y,W,H);g.strokeStyle='rgba(255,255,255,.25)';g.lineWidth=1;g.strokeRect(X+.5,Y+.5,W-1,H-1);
+ const bx=X+14,by=Y+24,bh=7,seg=ns.px/ns.parts;
+ for(let i=0;i<ns.parts;i++){g.fillStyle=i%2?'#fff':'#111';g.fillRect(bx+i*seg,by,seg,bh)}
+ g.strokeStyle='#fff';g.lineWidth=1;g.strokeRect(bx+.5,by+.5,ns.px-1,bh-1);
+ g.fillStyle='#e6e2d6';g.textAlign='center';
+ const km=ns.m>=1000,step=seg<34?2:1;
+ for(let i=0;i<=ns.parts;i++){const x=bx+i*seg,v=ns.m*i/ns.parts;g.fillRect(x-.5,by-4,1,4);
+  if(i!==ns.parts&&(i%step||ns.parts-i<step))continue;
+  const lab=i===ns.parts?WothMeasure.scaleLabel(ns.m):i===0?'0':(km?String(+(v/1000).toFixed(2)):String(+v.toFixed(1)));g.fillText(lab,x,by-7)}
+ g.textAlign='left';g.fillStyle='#9aa39f';
+ const perPx=1/pxPerM;g.fillText(`1 像素 ≈ ${perPx>=10?perPx.toFixed(0):perPx.toFixed(1)} m · 縮放 ×${view.s.toFixed(view.s<10?2:1)}`,X+8,Y+H-22);
+ g.fillText(`地圖全幅 ${(wCm/100000).toFixed(1)} × ${(hCm/100000).toFixed(1)} km`,X+8,Y+H-8);
+ g.restore();
+}
+
+// ---- distance measuring tool
+const measurePts={};let measureOn=false,measureHover=null,measureRaf=0;
+const mpts=()=>measurePts[curReserve()]||(measurePts[curReserve()]=[]);
+const myPos=()=>exactPlayer()||reservePin();
+function measureChain(){const me=$('#mfrom').checked?myPos():null;return(me?[{x:me.x,y:me.y,label:'我的位置'}]:[]).concat(mpts())}
+function measureSet(on){measureOn=on;$('#measurebtn').classList.toggle('on',on);$('#mapc').style.cursor=on?'crosshair':'';
+ if(on){window._wothPinMode=false;$('#pinbtn').classList.remove('on');$('#pinbtn').textContent='在地圖點選我的位置'}else measureHover=null;drawMap()}
+function measureSchedule(){if(!measureRaf)measureRaf=requestAnimationFrame(()=>{measureRaf=0;drawMap()})}
+function measureAddFromEvent(e){const c=$('#mapc'),r=c.getBoundingClientRect(),px=(e.clientX-r.left)*c.width/r.width,py=(e.clientY-r.top)*c.height/r.height,t=window.mapTransform;if(!t)return;
+ const near=pts.filter(p=>p[2]&&typeof p[2].x==='number'&&typeof p[2].y==='number'&&!p[2]._v4route).map(p=>[Math.hypot(p[0]-px,p[1]-py),p[2]]).filter(q=>q[0]<9).sort((a,b)=>a[0]-b[0])[0];
+ let pt;if(near){const a=near[1];pt={x:a.x,y:a.y,label:a._v4pin?a.label:(a.species?(a.species+(a.id?' #'+a.id:'')):(a.label||'地圖點'))}}
+ else{pt={x:Math.round(t.invx(px)),y:Math.round(t.invy(py)),label:'自選點'};const b=info.maps?.[curReserve()];if(b&&(pt.x<b.x_min||pt.x>b.x_max||pt.y<b.y_min||pt.y>b.y_max))return}
+ mpts().push(pt);drawMap()}
+function measureLines(){const ch=measureChain();
+ if(ch.length<2)return measureOn?['📏 量測距離',ch.length?'點選下一個位置（點到動物會吸附）':'點選起點，或勾選「從我的位置起算」','Esc 結束 · Backspace 復原']:null;
+ const tot=WothMeasure.pathLength(ch),a=ch[0],b=ch[ch.length-1],d=WothMeasure.dist(a,b),flipY=$('#mflip').checked;
+ const L=['📏 '+(ch.length-1)+' 段 · 總長 '+WothMeasure.fmtDist(tot)];
+ if(ch.length>2)L.push('起終點直線 '+WothMeasure.fmtDist(d));
+ L.push('ΔX '+(b.x-a.x>=0?'+':'')+fmt((b.x-a.x)/100,0)+' m · ΔY '+(b.y-a.y>=0?'+':'')+fmt((b.y-a.y)/100,0)+' m');
+ L.push(WothMeasure.screenDir(b.x-a.x,(flipY?-1:1)*(b.y-a.y)));
+ L.push('水平直線距離，不含高低差，不等於步行路徑');return L}
+function drawMeasurePanel(g,c){const L=measureLines();if(!L)return;g.save();g.font='12px sans-serif';g.textAlign='left';
+ const w=Math.max(...L.map(t=>g.measureText(t).width))+20,h=L.length*17+12,X=c.width-w-12,Y=12;
+ g.fillStyle='rgba(15,18,20,.9)';g.fillRect(X,Y,w,h);g.strokeStyle='#ffd54a';g.lineWidth=1;g.strokeRect(X+.5,Y+.5,w-1,h-1);
+ L.forEach((t,i)=>{g.fillStyle=i===0?'#ffd54a':(i===L.length-1?'#9aa39f':'#e6e2d6');g.font=(i===0?'bold ':'')+'12px sans-serif';g.fillText(t,X+10,Y+20+i*17)});g.restore()}
+function drawMeasureOverlay(g,tx,ty){
+ const ch=measureChain();drawMeasurePanel(g,g.canvas);if(!ch.length)return;
+ g.save();g.lineJoin='round';g.font='bold 12px sans-serif';g.textAlign='center';
+ const path=(a,b)=>{g.beginPath();g.moveTo(tx(a.x),ty(a.y));g.lineTo(tx(b.x),ty(b.y))};
+ const tag=(txt,X,Y)=>{const w=g.measureText(txt).width+10;g.fillStyle='rgba(15,18,20,.88)';g.fillRect(X-w/2,Y-9,w,18);g.strokeStyle='#ffd54a';g.lineWidth=1;g.strokeRect(X-w/2+.5,Y-8.5,w-1,17);g.fillStyle='#ffd54a';g.fillText(txt,X,Y+4)};
+ for(let i=1;i<ch.length;i++){path(ch[i-1],ch[i]);g.strokeStyle='rgba(0,0,0,.7)';g.lineWidth=6;g.stroke();g.strokeStyle='#ffd54a';g.lineWidth=3;g.stroke()}
+ let acc=0;for(let i=1;i<ch.length;i++){const d=WothMeasure.dist(ch[i-1],ch[i]);acc+=d;tag(WothMeasure.fmtDist(d),(tx(ch[i-1].x)+tx(ch[i].x))/2,(ty(ch[i-1].y)+ty(ch[i].y))/2-14)}
+ if(measureOn&&measureHover){const a=ch[ch.length-1],h=measureHover;g.setLineDash([6,5]);g.beginPath();g.moveTo(tx(a.x),ty(a.y));g.lineTo(h.px,h.py);g.strokeStyle='rgba(255,213,74,.85)';g.lineWidth=2;g.stroke();g.setLineDash([]);
+  const d=WothMeasure.dist(a,{x:window.mapTransform.invx(h.px),y:window.mapTransform.invy(h.py)});tag(WothMeasure.fmtDist(d)+(ch.length>1?' ｜累計 '+WothMeasure.fmtDist(WothMeasure.pathLength(ch)+d):''),h.px+50,h.py-16)}
+ ch.forEach((p,i)=>{const X=tx(p.x),Y=ty(p.y);g.beginPath();g.arc(X,Y,6,0,7);g.fillStyle=i===0?'#57d9ff':'#ffd54a';g.fill();g.strokeStyle='#000';g.lineWidth=2;g.stroke();
+  if(p.label&&p.label!=='自選點'){g.textAlign='left';g.fillStyle='#fff';g.strokeStyle='rgba(0,0,0,.85)';g.lineWidth=3;g.strokeText(p.label,X+9,Y+16);g.fillText(p.label,X+9,Y+16);g.textAlign='center'}});
+ g.restore();
+}
+$('#measurebtn').onclick=()=>measureSet(!measureOn);
+$('#measureundo').onclick=()=>{mpts().pop();drawMap()};
+$('#measureclear').onclick=()=>{measurePts[curReserve()]=[];measureHover=null;drawMap()};
+$('#mfrom').onchange=drawMap;
+$('#pinbtn').addEventListener('click',()=>setTimeout(()=>{if(measureOn&&window._wothPinMode)measureSet(false)},0));
+addEventListener('keydown',e=>{if(!$('#map').classList.contains('act'))return;if(e.key==='Escape'&&measureOn)measureSet(false);else if((e.key==='Backspace'||e.key==='z'&&(e.ctrlKey||e.metaKey))&&measureOn&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();mpts().pop();drawMap()}});
+['#msp','#mmode','#mflip'].forEach(s=>$(s).oninput=()=>{view={s:1,ox:0,oy:0};drawMap()});
+{const c=$('#mapc');let drag=null;c.onwheel=e=>{e.preventDefault();const f=e.deltaY<0?1.25:0.8,r=c.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;view=WothMeasure.zoomAt(view,mx,my,f,MAP_PAD);drawMap()};
+ let down=null;c.onmousedown=e=>{if(window._wothPinMode&&window.setManualPinFromEvent){setManualPinFromEvent(e);return}drag=[e.clientX,e.clientY];down=[e.clientX,e.clientY]};onmouseup=()=>drag=null;
+ c.onclick=e=>{if(measureOn&&down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])<4)measureAddFromEvent(e)};c.onmouseleave=()=>{if(measureHover){measureHover=null;measureSchedule()}};
+ c.onmousemove=e=>{if(drag){view.ox+=e.clientX-drag[0];view.oy+=e.clientY-drag[1];drag=[e.clientX,e.clientY];drawMap();return}
+  const r=c.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;if(measureOn){measureHover={px:mx*c.width/r.width,py:my*c.height/r.height};if(measureChain().length)measureSchedule()}const p=pts.find(p=>Math.abs(p[0]-mx)<6&&Math.abs(p[1]-my)<6),t=$('#mtip');
+  if(!p){t.style.display='none';return}const a=p[2];t.style.display='block';t.style.left=e.clientX+14+'px';t.style.top=e.clientY+14+'px';
+  t.innerHTML=a._z?zoneTip(a):a._h?`<b>獸群 ${esc(a.id)}</b><br>${esc(a.species)} ${esc(a.species_zh)}<br>${a.size} 隻（公 ${a.males??'?'} / 母 ${a.females??'?'}）`:`<b>${esc(a.species)} ${esc(a.species_zh)}</b><br>${a.gender} · ${esc(a.age_label)}${a.variant?' · '+esc(a.variant_zh):''}<br>年齡 ${esc(a.age_label)} · Fitness ${pct(a.fitness)}<br>ID ${esc(a.id)} · 獸群 ${esc(a.herd_id)}`;
+  const me=myPos();if(me&&typeof a.x==='number'&&typeof a.y==='number'&&!a._v4pin)t.innerHTML+=`<br><span class="mut">距離我 ${WothMeasure.fmtDist(WothMeasure.dist(me,a))}</span>`}}
+addEventListener('resize',drawMap);
+
+// ---- live
+function logLine(html){const d=document.createElement('div');d.innerHTML=`<span class="mut">${new Date().toLocaleTimeString()}</span> ${html}`;$('#log').prepend(d)}
+$('#clrlog').onclick=()=>{$('#log').innerHTML='';marks={added:new Set(),removed:new Map()};render()};
+$('#live').onclick=()=>{liveOn=!liveOn;$('#live').classList.toggle('on',liveOn);clearInterval(liveTimer);if(liveOn){logLine('Live 模式開啟，監看 '+esc(cur));liveTimer=setInterval(poll,(info.poll_seconds||3)*1000)}else logLine('Live 模式關閉')};
+async function poll(){if(!cur||!S)return;try{const r=await api(`/api/live?path=${encodeURIComponent(cur)}&since=${S.mtime}&sha1=${encodeURIComponent(S.sha1||'')}`);if(!r.changed)return;
+ const oldMap=new Map(S.animals.map(a=>[a.key,a]));const nk=new Set(r.animals.map(a=>a.key));
+ const added=r.animals.filter(a=>!oldMap.has(a.key)),removed=S.animals.filter(a=>!nk.has(a.key)),died=r.animals.filter(a=>a.dead&&oldMap.has(a.key)&&!oldMap.get(a.key).dead);
+ const oldPos=S.player_state?.available?S.player_state.position:null,newPos=r.player_state?.available?r.player_state.position:null;
+ const playerMoved=oldPos&&newPos&&(oldPos.x!==newPos.x||oldPos.y!==newPos.y||oldPos.z!==newPos.z);
+ added.forEach(a=>marks.added.add(a.key));removed.concat(died).forEach(a=>marks.removed.set(a.key,{...a,dead:true}));
+ S=r;if(playerMoved)routeData=null;render();if(r.journal_new_events){journalData=null;logLine(`📓 狩獵日誌新增 ${r.journal_new_events} 筆事件`)}logLine(`存檔已更新：<span style="color:var(--new)">+${added.length} 新生成</span>，<span style="color:var(--gone)">−${removed.length+died.length} 消失/死亡</span>`);
+ if(playerMoved)logLine(`<span class="pin-exact">● 玩家位置更新：X ${fmt(newPos.x,0)} / Y ${fmt(newPos.y,0)} / Z ${fmt(newPos.z,0)}</span>`);
+ removed.concat(died).forEach(a=>logLine(`<span style="color:var(--gone)">✖ ${esc(a.species)} ${esc(a.species_zh)} ${a.gender} 分數 ${fmt(a.score)}（獸群 ${esc(a.herd_id)}）</span>`));
+ added.forEach(a=>logLine(`<span style="color:var(--new)">✚ ${esc(a.species)} ${esc(a.species_zh)} ${a.gender}（獸群 ${esc(a.herd_id)}）</span>`));
+ status(`Live：${new Date(r.mtime*1000).toLocaleTimeString()} 更新`)}catch(e){status(e.message,1)}}
+
+// ---- history & health
+async function loadHistory(force=false){
+ if(!cur)return;if(historyData&&!force){renderHistory();return}$('#historynote').textContent='讀取歷史中…';
+ try{historyData=await api('/api/history?path='+encodeURIComponent(cur));renderHistory()}catch(e){$('#historynote').textContent=e.message}
+}
+function metricValue(p,sp,k){
+ const rows=sp?p.species.filter(s=>s.species===sp):p.species;
+ if(k==='total'&&!sp)return p.total;if(k==='rare'&&!sp)return p.rare;
+ if(k==='avg_fitness'){let n=0,sum=0;for(const s of rows)if(s.avg_fitness!=null){const w=s.male||1;sum+=s.avg_fitness*w;n+=w}return n?sum/n:null}
+ return rows.reduce((n,s)=>n+(s[k]||0),0);
+}
+function renderHistory(){
+ if(!historyData)return;const pts=historyData.points,all=[...new Set(pts.flatMap(p=>p.species.map(s=>s.species)))].sort(),old=$('#trendsp').value;
+ $('#trendsp').innerHTML='<option value="">全部物種</option>'+all.map(s=>`<option value="${esc(s)}" ${s===old?'selected':''}>${esc(s)}</option>`).join('');
+ $('#historynote').textContent=`${historyData.snapshot_count} 份快照，${pts.length} 個不同版本；上限 ${historyData.max_snapshots}`;
+ const icons={ok:'✓',warn:'⚠',error:'✖'};$('#healthcards').innerHTML=historyData.health.checks.map(c=>`<div class="card"><span class="mut">${esc(c.label)}</span><b style="color:${c.status==='ok'?'#78dba9':c.status==='warn'?'#e3b341':'#f85149'}">${icons[c.status]} ${esc(c.value)}</b></div>`).join('');
+ table('#historyt',[['時間','time','',p=>new Date(p.time*1000).toLocaleString()],['保護區','reserve'],['動物','total','n'],['獸群','herds','n'],['稀有','rare','n'],['SHA-1','sha1','mut',p=>esc(p.sha1.slice(0,12))]],pts);
+ drawTrend();
+}
+function drawTrend(){
+ const c=$('#trendc'),g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);g.fillStyle='#0d1012';g.fillRect(0,0,c.width,c.height);
+ if(!historyData)return;const sp=$('#trendsp').value,k=$('#trendmetric').value,pts=historyData.points.map(p=>({p,v:metricValue(p,sp,k)})).filter(x=>x.v!=null);
+ g.font='12px sans-serif';if(pts.length<2){g.fillStyle='#9aa39f';g.fillText('至少需要兩個不同內容的快照才會形成趨勢線；程式會在每次存檔變化後自動保存。',24,36);return}
+ const pad=48,vals=pts.map(x=>x.v),mn=Math.min(...vals),mx=Math.max(...vals),span=mx-mn||1,dx=(c.width-pad*2)/(pts.length-1);
+ g.strokeStyle='#323b41';g.beginPath();g.moveTo(pad,pad);g.lineTo(pad,c.height-pad);g.lineTo(c.width-pad,c.height-pad);g.stroke();
+ g.strokeStyle='#c9a24a';g.lineWidth=3;g.beginPath();pts.forEach((x,i)=>{const X=pad+i*dx,Y=c.height-pad-(x.v-mn)/span*(c.height-pad*2);i?g.lineTo(X,Y):g.moveTo(X,Y)});g.stroke();
+ pts.forEach((x,i)=>{const X=pad+i*dx,Y=c.height-pad-(x.v-mn)/span*(c.height-pad*2);g.fillStyle='#ffe08a';g.beginPath();g.arc(X,Y,4,0,7);g.fill()});
+ g.fillStyle='#9aa39f';g.fillText(k==='avg_fitness'?(mn*100).toFixed(1)+'%':fmt(mn),6,c.height-pad+4);g.fillText(k==='avg_fitness'?(mx*100).toFixed(1)+'%':fmt(mx),6,pad+4);g.fillText(new Date(pts[0].p.time*1000).toLocaleDateString(),pad,c.height-14);g.fillText(new Date(pts.at(-1).p.time*1000).toLocaleDateString(),c.width-pad-80,c.height-14);
+}
+['#trendsp','#trendmetric'].forEach(s=>$(s).oninput=drawTrend);
+$('#refreshhistory').onclick=()=>{historyData=null;loadHistory(true)};
+$('#report').onclick=async()=>{if(!historyData)await loadHistory();const present=new Map(A().map(a=>[wkey(a),a]));const report={tool:'WOTH Animal Population Scanner',version:info.version,generated:new Date().toISOString(),save:{name:S.name,sha1:S.sha1,reserve:S.db_info?.reserve,total:S.animals.length,herds:S.herds.length},thresholds:{high_percent:+$('#highfit').value,low_percent:+$('#lowfit').value},health:historyData?.health,herds:herdAnalytics().map(({fit,...h})=>h),watched:[...watched].map(k=>({...watchMeta[k],key:k,status:present.has(k)?'present':'missing'}))};const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='woth-management-report.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+
+// ---- compare
+async function loadSnaps(){if(!cur)return;const s=await api('/api/snapshots?path='+encodeURIComponent(cur));$('#snaps').innerHTML=s.map(x=>`<option value="${esc(x.path)}">${esc(x.name)}</option>`).join('')||'<option value="">（尚無快照；每次讀取會自動保存）</option>';if(s.length>1)$('#snaps').selectedIndex=1}
+$('#docmp').onclick=async()=>{const a=$('#snaps').value;if(!a)return;const d=await api(`/api/diff?a=${encodeURIComponent(a)}&b=${encodeURIComponent(cur)}`);
+ $('#cmpinfo').textContent=`新增 ${d.added.length}，消失/死亡 ${d.removed.length}，持續個體變化 ${d.changed?.length||0}`;const rows=d.added.map(x=>({...x,_c:'new',chg:'新增'})).concat(d.removed.map(x=>({...x,_c:'gone',chg:'消失'})));
+ const sm={};const gs=x=>sm[x.species]??={species:x.species,zh:x.species_zh,added:0,removed:0,aged:0,herd:0,fitness:0,moved:0};for(const x of d.added)gs(x).added++;for(const x of d.removed)gs(x).removed++;for(const c of d.changed||[]){const s=gs(c.animal);if(c.age_delta)s.aged++;if(c.herd_changed)s.herd++;if(c.fitness_changed)s.fitness++;if(c.moved_m>=100)s.moved++}const sr=Object.values(sm).map(s=>({...s,net:s.added-s.removed})).sort((a,b)=>Math.abs(b.net)-Math.abs(a.net)||b.added+b.removed-a.added-a.removed);
+ table('#cmpst',[['物種','species'],['中文','zh'],['新增','added','n'],['消失/死亡','removed','n'],['淨變化','net','n'],['年齡增加','aged','n'],['換獸群','herd','n'],['Fitness 變化','fitness','n'],['移動≥100m','moved','n']],sr);
+ table('#transt',[['物種','species'],['中文','species_zh'],['ID','id'],['年齡','age','n',r=>`${fmt(r.beforeAge,0)} → ${fmt(r.age,0)}`],['階段','age_stage','',r=>`${esc(r.beforeStage||'?')} → ${esc(r.age_stage||'?')}`],['獸群變更','herd_changed','',r=>r.herd_changed?'是':''],['Fitness 變更','fitness_changed','',r=>r.fitness_changed?'是':''],['移動','moved_m','n',r=>r.moved_m!=null?`${fmt(r.moved_m,1)} m`:'']],(d.changed||[]).map(c=>({...c.animal,beforeAge:c.before.age,beforeStage:c.before.age_stage,...c})));
+ table('#ct',[['變化','chg'],...ACOLS],rows,null,r=>r._c)};
+
+// ---- tree
+$('#tload').onclick=async()=>{if(!cur)return;const t=await api('/api/tree?path='+encodeURIComponent(cur));const q=$('#tq').value.toLowerCase();
+ const blob=new Blob([JSON.stringify(t,null,1)],{type:'application/json'});$('#tdl').href=URL.createObjectURL(blob);$('#tdl').download='woth_save_dump.json';$('#tdl').textContent='下載完整 JSON';
+ const node=(k,v,d)=>{if(v&&typeof v==='object'){const ent=Array.isArray(v)?v.map((x,i)=>[i,x]):Object.entries(v);const open=d<2||(q&&JSON.stringify(v).toLowerCase().includes(q));return `<details ${open?'open':''}><summary><span class="k">${esc(k)}</span> <span class="mut">${Array.isArray(v)?`[${v.length}]`:`{${ent.length}}`}</span></summary>${ent.slice(0,300).map(([a,b])=>node(a,b,d+1)).join('')}</details>`}
+  const hit=q&&String(k).toLowerCase().includes(q);return `<div style="margin-left:14px;${hit?'background:#3a3000':''}"><span class="k">${esc(k)}</span>: <span class="v">${esc(JSON.stringify(v))}</span></div>`};
+ $('#treeout').innerHTML=node('根目錄',t,0)};
+init();
+</script>
+<script>
+// v3.0 — Habitat Lab, Need-Zone Navigator and Hunt Journal
+const zoneCache={}, ZCOL={Drink:'#3aa0ff',Feed:'#4cd964',Sleep:'#c86bff'}, ACTS=['Drink','Feed','Sleep'];
+let zoneFocus=null,journalData=null;
+function curReserve(){return $('#mapf').value||S?.reserve||S?.db_info?.reserve||(S?.maps?.length===1?S.maps[0]:'')}
+function zonesFor(r){
+ if(!r)return null;if(Object.hasOwn(zoneCache,r))return zoneCache[r];zoneCache[r]=null;
+ api('/api/zones?reserve='+encodeURIComponent(r)).then(z=>zoneCache[r]=z).catch(()=>zoneCache[r]={available:false})
+ .finally(()=>{if($('#map').classList.contains('act'))drawMap();renderPlanner();});
+ return null;
+}
+function speciesSlug(sp){return S?.animals.find(a=>a.species===sp)?.knowledge_slug||S?.herds.find(h=>h.species===sp)?.slug||null}
+function catInfo(slug){return (catalog.animals||[]).find(a=>a.slug===slug)}
+function zoneCount(slug,act){const z=zonesFor(curReserve());if(!z)return '…';if(!z.available)return '無資料';if(!slug||!ACTS.includes(act))return '—';const t=z.territories.filter(x=>x.slug===slug);return t.length?`${t.reduce((n,x)=>n+x[act].length,0)}（${t.length} 領域）`:'0'}
+function matchLabel(h){if(h.territory_match==='no-data')return '<span class="mut">無資料</span>';if(h.territory_dist_m==null)return '—';const c=h.territory_match==='high'?'advice-good':h.territory_match==='unmatched'?'advice-low':'';return `<span class="${c}">${fmt(h.territory_dist_m,0)} m${h.territory_match==='unmatched'?'（未對應）':''}</span>`}
+function herdOf(a){return S?.herds.find(h=>h.index===a.herd_index)}
+function territoryOf(h){const z=zonesFor(curReserve());return z?.available&&h?.territory_id?z.territories.find(t=>t.id===h.territory_id):null}
+function nearestZone(t,act,x,y){const zs=t?.[act]||[];if(!zs.length)return null;let b=null,d=Infinity;for(const p of zs){const q=(p[0]-x)**2+(p[1]-y)**2;if(q<d){d=q;b=p}}return {x:b[0],y:b[1],m:Math.sqrt(d)/100}}
+function drawZones(g,tx,ty,sp){
+ const mode=$('#mzones').value,note=$('#zonenote');note.textContent='';if(mode==='none')return;
+ const r=curReserve(),z=zonesFor(r);if(!z){note.textContent='載入需求區…';return}if(!z.available){note.textContent=`${r||'此保護區'} 沒有開放授權的需求區資料`;return}
+ const slug=sp?speciesSlug(sp):null,hour=+$('#gamehour').value;let terr=z.territories.filter(t=>(!slug||t.slug===slug)&&(!zoneFocus||t.id===zoneFocus)),n=0;g.save();
+ for(const t of terr){const X=tx(t.x),Y=ty(t.y);let acts=ACTS;if(mode==='active'){const ac=activityAt(catInfo(t.slug),hour);acts=ac?[ac.activity]:[]}
+  if(mode!=='territory')for(const act of acts)for(const p of t[act]){const x=tx(p[0]),y=ty(p[1]);g.strokeStyle=ZCOL[act]+'66';g.lineWidth=1;g.beginPath();g.moveTo(X,Y);g.lineTo(x,y);g.stroke();g.fillStyle=ZCOL[act];g.beginPath();g.arc(x,y,zoneFocus?6:4,0,7);g.fill();pts.push([x,y,{_z:1,activity:act,t,x:p[0],y:p[1]}]);n++}
+  g.strokeStyle='#fff';g.lineWidth=1.5;g.beginPath();g.arc(X,Y,zoneFocus?8:5,0,7);g.stroke();pts.push([X,Y,{_z:2,t}]);
+ }g.restore();note.textContent=`${terr.length} 個領域 · ${n} 個需求區${mode==='active'?' · '+clock(hour):''}${zoneFocus?' · 已聚焦單一獸群':''}`;
+}
+function zoneTip(a){const k=catInfo(a.t.slug),nm=k?`${esc(k.name)} ${esc(k.name_zh)}`:esc(a.t.slug);if(a._z===1)return `<b>${a.activity}／${actZh[a.activity]} 需求區</b><br>${nm}<br>領域 ${esc(a.t.id)} · X ${fmt(a.x,0)} / Y ${fmt(a.y,0)}`;const ac=activityAt(k,+$('#gamehour').value);return `<b>領域 ${esc(a.t.id)}</b><br>${nm}<br>飲水 ${a.t.Drink.length} · 覓食 ${a.t.Feed.length} · 休息 ${a.t.Sleep.length}${ac?`<br>${clock(+$('#gamehour').value)}：${ac.activity}／${actZh[ac.activity]}`:''}`}
+function detailV3(a){const h=herdOf(a),t=territoryOf(h),k=S.species_info?.[a.species],ac=activityAt(k,+$('#gamehour').value),nz=t&&ac?nearestZone(t,ac.activity,a.x,a.y):null;const zone=nz?` · ${clock(+$('#gamehour').value)} ${ac.activity}/${actZh[ac.activity]} 最近需求區 ${fmt(nz.m,0)} m`:'';const lim=a.age_limit!=null?` · 公開成熟上限 ${fmt(a.age_limit,0)} 年（${a.years_to_limit<=0?'已達上限':'剩 '+fmt(a.years_to_limit,0)+' 年'}）`:'';const terr=h?(h.territory_id?`領域 ${esc(h.territory_id)}（${fmt(h.territory_dist_m,0)} m）`:h.territory_match==='no-data'?'此地圖無需求區資料':'未對應領域'):'';return `<span class="mut">近似棲地 ${esc(a.habitat_zh||a.habitat||'未知')}${a.area?' / '+esc(a.area):''} · ${terr}${zone}${lim}</span>${t?'<button id="zonebtn">顯示此群需求區</button>':''}`}
+function gotoZones(a){const h=herdOf(a);zoneFocus=h?.territory_id||null;$('#msp').value=a.species;$('#mmode').value='animals';$('#mzones').value='all';mapFocus=a;$('#tabs a[data-t="map"]').click()}
+$('#mzones').addEventListener('input',()=>{zoneFocus=null;drawMap()});$('#msp').addEventListener('input',()=>{zoneFocus=null;drawMap()});
+$('#gamehour').addEventListener('input',()=>{if($('#mzones').value==='active'&&$('#map').classList.contains('act'))drawMap();if($('#habitat').classList.contains('act'))renderHabitat()});
+
+function habitatPools(){const lo=(+$('#lowfit').value||50)/100,m={};for(const a of A()){const key=a.species+'|'+(a.habitat||'未知'),g=m[key]??={species:a.species,zh:a.species_zh,habitat:a.habitat||'未知',habitat_zh:a.habitat_zh||'未知',animals:0,herds:new Set,fit:[],rare:0};g.animals++;g.herds.add(a.herd_index);if(a.variant)g.rare++;if(a.gender==='M'&&a.fitness!=null)g.fit.push(a)}return Object.values(m).map(g=>{const fs=g.fit.map(a=>a.fitness),avg=fs.length?fs.reduce((x,y)=>x+y,0)/fs.length:null;return {...g,hc:g.herds.size,n:fs.length,avg,below:avg==null?0:fs.filter(x=>x<avg).length,low:fs.filter(x=>x<=lo).length,mature_below:avg==null?0:g.fit.filter(a=>a.fitness<avg&&a.age_stage==='Mature').length}})}
+function simulateCull(pool,{limit=5,mature=true,spread=true,maxFit=null}={}){
+ if(!pool.length)return {n:0,before:null,after:null,delta:null,chosen:[],eligible:0,touched:0,total:0};const avg=pool.reduce((s,a)=>s+a.fitness,0)/pool.length,elig=pool.filter(a=>a.fitness<avg&&(maxFit==null||a.fitness<=maxFit)&&(!mature||a.age_stage==='Mature')).sort((a,b)=>a.fitness-b.fitness);let chosen=[];
+ if(spread){const by=new Map;for(const a of elig){if(!by.has(a.herd_index))by.set(a.herd_index,[]);by.get(a.herd_index).push(a)}const qs=[...by.values()].sort((a,b)=>a[0].fitness-b[0].fitness);while(chosen.length<limit&&qs.some(q=>q.length))for(const q of qs)if(q.length&&chosen.length<limit)chosen.push(q.shift())}else chosen=elig.slice(0,limit);
+ const set=new Set(chosen),rest=pool.filter(a=>!set.has(a)),after=rest.length?rest.reduce((s,a)=>s+a.fitness,0)/rest.length:null;return {n:pool.length,before:avg,after,delta:after==null?null:after-avg,chosen,eligible:elig.length,touched:new Set(chosen.map(a=>a.herd_index)).size,total:new Set(pool.map(a=>a.herd_index)).size};
+}
+function renderHabitat(){
+ if(!S)return;const pools=habitatPools().sort((a,b)=>a.species.localeCompare(b.species)||a.habitat.localeCompare(b.habitat)),hi=(+$('#highfit').value||90)/100,lo=(+$('#lowfit').value||50)/100,hour=+$('#gamehour').value,sps=[...new Set(pools.filter(p=>p.n).map(p=>p.species))],oldSp=$('#hsp').value;
+ $('#hsp').innerHTML=sps.map(s=>`<option value="${esc(s)}">${esc(s)} ${esc(zh(s))}</option>`).join('')||'<option value="">（沒有已知公獸 Fitness）</option>';if(sps.includes(oldSp))$('#hsp').value=oldSp;const sp=$('#hsp').value,habs=pools.filter(p=>p.species===sp&&p.n).sort((a,b)=>b.n-a.n),oldH=$('#hhab').value;
+ $('#hhab').innerHTML=habs.map(p=>`<option value="${esc(p.habitat)}">${esc(p.habitat_zh)}（${p.n} 公）</option>`).join('');if(habs.some(p=>p.habitat===oldH))$('#hhab').value=oldH;const hab=$('#hhab').value,pool=A().filter(a=>a.species===sp&&(a.habitat||'未知')===hab&&a.gender==='M'&&a.fitness!=null),sim=simulateCull(pool,{limit:Math.max(1,Math.min(50,+$('#hlimit').value||5)),mature:$('#hmature').checked,spread:$('#hspread').checked,maxFit:$('#hlowonly').checked?lo:null}),zm=S.zone_match||{},dl=sim.delta==null?'—':`<span class="${sim.delta>0?'advice-good':sim.delta<0?'advice-low':''}">${sim.delta>=0?'+':''}${(sim.delta*100).toFixed(2)} pt</span>`;
+ $('#hstats').innerHTML=[['棲地已知公獸',sim.n],['目前觀察平均',sim.before==null?'—':bandChip(sim.before)],['試算後平均',sim.after==null?'—':bandChip(sim.after)],['平均變化',dl],['試算移除',`${sim.chosen.length} / 可選 ${sim.eligible}`],['涉及獸群',`${sim.touched} / ${sim.total}`],['需求區領域對應',zm.available?`${Math.round((zm.match_rate||0)*100)}% · 中位 ${fmt(zm.median_dist_m,0)} m`:'無資料']].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ $('#hcandnote').textContent=sim.chosen.length?`依 Fitness 由低到高${$('#hspread').checked?'、輪流分散到不同獸群':''}；這只重算觀察平均，不預測新生個體。`:'目前設定下沒有低於平均的候選。';
+ const cand=sim.chosen.map(a=>{const h=herdOf(a),t=territoryOf(h),ac=activityAt(S.species_info?.[a.species],hour),nz=t&&ac?nearestZone(t,ac.activity,a.x,a.y):null;return {...a,act:ac?`${ac.activity}／${actZh[ac.activity]}`:'無資料',zd:nz?.m??null}});
+ table('#hcand',[['物種','species'],['生命階段','age_stage','',r=>r.age_stage?`${esc(r.age_stage)}／${esc(r.age_stage_zh)}`:'未知'],['年齡','age','n'],['Fitness','fitness','n',r=>bandChip(r.fitness)],['與平均差','fitness','n',r=>`${((r.fitness-sim.before)*100).toFixed(1)} pt`],['獸群','herd_id'],['區域','area'],['目前活動','act'],['最近活動需求區','zd','n',r=>r.zd==null?'—':`${fmt(r.zd,0)} m`],['ID','id','mut']],cand,a=>{$('#fsp').value=a.species;$('#tabs a[data-t="list"]').click();renderList();showDetail(a)});
+ table('#hpool',[['物種','species'],['中文','zh'],['近似棲地','habitat_zh'],['動物','animals','n'],['獸群','hc','n'],['已知公獸','n','n'],['觀察平均','avg','n',r=>r.avg==null?'—':bandChip(r.avg)],['低於平均','below','n'],['其中成熟','mature_below','n'],['≤低門檻','low','n'],['稀有','rare','n']],pools,r=>{$('#hsp').value=r.species;renderHabitat();$('#hhab').value=r.habitat;renderHabitat()});
+ const f=$('#hagef').value,ages=A().filter(a=>a.age_limit_status&&(!f||(f==='high'&&a.gender==='M'&&a.fitness!=null&&a.fitness>=hi)||(f==='rare'&&a.variant))).sort((a,b)=>a.years_to_limit-b.years_to_limit||(b.fitness??-1)-(a.fitness??-1));
+ table('#hage',[['狀態','age_limit_status','',r=>r.age_limit_status==='at-limit'?'<span class="advice-low">已達公開上限</span>':'<span class="warn">1 年內</span>'],['物種','species'],['中文','species_zh'],['性別','gender'],['年齡','age','n'],['上限','age_limit','n'],['Fitness','fitness','n',r=>r.fitness==null?'—':bandChip(r.fitness)],['稀有','variant_zh'],['近似棲地','habitat_zh'],['獸群','herd_id'],['ID','id','mut']],ages,a=>{$('#fsp').value=a.species;$('#tabs a[data-t="list"]').click();renderList();showDetail(a)});
+}
+['#hsp','#hhab','#hlimit','#hmature','#hspread','#hlowonly','#hagef','#highfit','#lowfit'].forEach(s=>$(s).addEventListener('input',renderHabitat));
+
+async function loadJournal(force=false){if(journalData&&!force){renderJournal();return}$('#jnote').textContent='讀取日誌…';try{journalData=await api('/api/journal?limit=3000');renderJournal()}catch(e){$('#jnote').textContent=e.message}}
+function renderJournal(){const j=journalData;if(!j)return;const res=$('#jres').value,type=$('#jtype').value,rs=[...new Set(j.species.map(s=>s.reserve))].sort();$('#jres').innerHTML='<option value="">全部保護區</option>'+rs.map(r=>`<option ${r===res?'selected':''}>${esc(r)}</option>`).join('');const sp=j.species.filter(s=>!res||s.reserve===res),ev=j.events.filter(e=>(!res||e.reserve===res)&&(!type||(type==='spawned'?e.type==='spawned':e.type==='removed'&&(type==='year'?e.year_turn:!e.year_turn)))),tl=j.timeline.filter(t=>!res||t.reserve===res),judged=sp.reduce((n,s)=>n+s.judged,0),below=sp.reduce((n,s)=>n+s.below,0);$('#jnote').textContent=`${j.transitions} 次存檔變化 · ${j.event_count} 筆事件`;
+ $('#jstats').innerHTML=[['存檔變化',tl.length],['年度更替',tl.filter(t=>t.year_turn).length],['期間消失',sp.reduce((n,s)=>n+s.removed_period,0)],['年度更替消失',sp.reduce((n,s)=>n+s.removed_year,0)],['新生成',sp.reduce((n,s)=>n+s.spawned,0)],['稀有消失',sp.reduce((n,s)=>n+s.rare_removed,0)],['管理品質',judged?`${Math.round(below/judged*100)}% 低於平均（${below}/${judged}）`:'—']].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#jsp',[['保護區','reserve'],['物種','species'],['中文','species_zh'],['期間消失','removed_period','n'],['年度更替消失','removed_year','n'],['新生成','spawned','n'],['稀有消失','rare_removed','n'],['消失公獸平均','avg_removed_fitness','n',r=>pct(r.avg_removed_fitness)],['當時棲地平均','avg_habitat_at_time','n',r=>pct(r.avg_habitat_at_time)],['低於平均比例','below_avg_rate','n',r=>r.below_avg_rate==null?'—':`${Math.round(r.below_avg_rate*100)}%`]],sp);
+ table('#jtl',[['偵測時間','to','',t=>new Date(t.to*1000).toLocaleString()],['前一狀態','from','',t=>new Date(t.from*1000).toLocaleString()],['保護區','reserve'],['類型','year_turn','',t=>t.year_turn?'<span class="warn">年度更替</span>':'期間變化'],['消失','removed','n'],['新生成','spawned','n'],['年齡增加','aged','n'],['持續個體','persisting','n']],[...tl].reverse());
+ table('#jev',[['偵測時間','detected','',e=>new Date(e.detected*1000).toLocaleString()],['事件','type','',e=>e.type==='spawned'?'<span style="color:var(--new)">新生成</span>':e.year_turn?'<span class="warn">年度更替消失</span>':'<span style="color:var(--gone)">期間消失</span>'],['保護區','reserve'],['物種','species'],['中文','species_zh'],['性別','gender'],['階段','age_stage'],['年齡','age','n'],['Fitness','fitness','n',e=>e.fitness==null?'—':bandChip(e.fitness)],['當時棲地平均','habitat_avg','n',e=>pct(e.habitat_avg)],['低於平均','below_avg','',e=>e.below_avg==null?'':e.below_avg?'✓ 是':'否'],['稀有','variant'],['近似棲地','habitat'],['獸群','herd_id'],['ID','id','mut']],ev);
+}
+['#jres','#jtype'].forEach(s=>$(s).addEventListener('input',renderJournal));
+$('#jrebuild').onclick=async()=>{const b=$('#jrebuild');b.disabled=true;$('#jnote').textContent='重建中（讀取所有快照）…';try{const r=await api('/api/journal/rebuild');journalData=null;await loadJournal(true);$('#jnote').textContent+=` · 本次比對 ${r.pairs} 組快照，新增 ${r.new_events} 筆`}catch(e){$('#jnote').textContent=e.message}finally{b.disabled=false}};
+$('#jexport').onclick=()=>{if(!journalData)return;const u=URL.createObjectURL(new Blob([JSON.stringify({tool:'WOTH Animal Population Scanner',version:info.version,...journalData},null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='woth_hunt_journal.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+async function loadWoth2(){try{const w=await api('/api/woth2'),box=$('#woth2box');box.style.display='block';box.innerHTML=`<b>Way of the Hunter 2（Early Access）存檔偵測</b> <span class="badge">${w.count?`找到 ${w.count} 個檔案`:'未找到'}</span><div class="mut" style="margin-top:6px">${esc(w.note)} 預設位置：%LOCALAPPDATA%\\WOTH2\\Saved\\SaveGames\\Account_*\\*.nrgs</div>`+(w.files.length?`<table style="margin-top:6px"><thead><tr><th>檔案</th><th>修改時間</th><th class="n">大小</th><th>特徵</th><th class="n">熵</th></tr></thead><tbody>${w.files.slice(0,8).map(f=>`<tr><td>${esc(f.name)}</td><td>${f.mtime?new Date(f.mtime*1000).toLocaleString():''}</td><td class="n">${f.size?(f.size/1024).toFixed(0)+' KB':''}</td><td>${esc(f.kind||f.error||'')} <span class="mut">${esc(f.magic_hex||'')}</span></td><td class="n">${fmt(f.entropy_64k,2)}</td></tr>`).join('')}</tbody></table>`:'')}catch(e){}}
+</script>
+<script>
+// v4.0 — verified player state, expedition routes and population observatory
+let observatoryData=null,routeData=null,methodData=null;
+let manualPins=JSON.parse(localStorage.getItem('woth-manual-pins-v4')||'{}');
+function resetV4State(){observatoryData=null;routeData=null}
+function reservePin(){return manualPins[curReserve()]||null}
+function savePins(){localStorage.setItem('woth-manual-pins-v4',JSON.stringify(manualPins))}
+function downloadJSON(name,data){const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function exactPlayer(){const p=S?.player_state;return p?.available&&p.confidence==='exact'?p.position:null}
+function renderV4Status(){
+ if(!S)return;const ps=S.player_state||{},pin=reservePin(),codes=ps.current_map?.codes?.map(x=>x.code).join('、');
+ $('#playernote').innerHTML=ps.available?`<span class="pin-exact">● 存檔位置 exact：X ${fmt(ps.position.x,0)} / Y ${fmt(ps.position.y,0)}</span>`:pin?`<span class="pin-manual">◆ 手動位置：X ${fmt(pin.x,0)} / Y ${fmt(pin.y,0)}</span>`:`玩家座標未驗證${codes?' · 目前地圖 '+esc(codes):''}`;
+ const sps=[...new Set(A().map(a=>a.species))].sort(),old=$('#routesp').value;
+ $('#routesp').innerHTML='<option value="">全部物種</option>'+sps.map(s=>`<option value="${esc(s)}">${esc(s)} ${esc(zh(s))}</option>`).join('');if(sps.includes(old))$('#routesp').value=old;renderRouteHabitats();
+ $('#routestatus').innerHTML=ps.available?`<b class="pin-exact">已驗證存檔玩家位置</b><div class="mut">${esc(ps.path)} · X ${fmt(ps.position.x,0)} / Y ${fmt(ps.position.y,0)} / Z ${fmt(ps.position.z,0)}。${esc(ps.note)}</div>`:`<b class="warn">目前 SaveData 沒有已驗證的玩家座標</b><div class="mut">${esc(ps.note||'')}</div>${pin?`<div class="pin-manual">已有手動地圖釘，可作為路線起點。</div>`:''}`;
+}
+function renderRouteHabitats(){if(!S)return;const sp=$('#routesp').value,old=$('#routehab').value,hs=[...new Set(A().filter(a=>!sp||a.species===sp).map(a=>a.habitat||'未知'))].sort();$('#routehab').innerHTML='<option value="">全部</option>'+hs.map(h=>`<option>${esc(h)}</option>`).join('');if(hs.includes(old))$('#routehab').value=old}
+$('#routesp').addEventListener('input',renderRouteHabitats);
+$('#pinbtn').onclick=()=>{window._wothPinMode=!window._wothPinMode;$('#pinbtn').classList.toggle('on',window._wothPinMode);$('#pinbtn').textContent=window._wothPinMode?'請點地圖位置…':'在地圖點選我的位置'};
+$('#pinclear').onclick=()=>{delete manualPins[curReserve()];savePins();window._wothPinMode=false;$('#pinbtn').classList.remove('on');$('#pinbtn').textContent='在地圖點選我的位置';routeData=null;renderV4Status();renderList();drawMap()};
+function setManualPinFromEvent(e){const c=$('#mapc'),r=c.getBoundingClientRect(),px=(e.clientX-r.left)*c.width/r.width,py=(e.clientY-r.top)*c.height/r.height,t=window.mapTransform;if(!t)return;const x=Math.round(t.invx(px)*10)/10,y=Math.round(t.invy(py)*10)/10,b=info.maps?.[curReserve()];if(b&&(x<b.x_min||x>b.x_max||y<b.y_min||y>b.y_max)){$('#playernote').innerHTML='<span class="warn">點選位置在校準地圖之外，請重新點選底圖內。</span>';return}manualPins[curReserve()]={x,y,set_at:new Date().toISOString()};savePins();window._wothPinMode=false;$('#pinbtn').classList.remove('on');$('#pinbtn').textContent='在地圖點選我的位置';renderV4Status();renderList();drawMap()}
+
+function drawPin(g,tx,ty,p,color,label,kind){if(!p)return;const X=tx(p.x),Y=ty(p.y);g.save();g.strokeStyle=color;g.fillStyle=color;g.lineWidth=3;g.beginPath();g.arc(X,Y,9,0,Math.PI*2);g.stroke();g.beginPath();g.moveTo(X-13,Y);g.lineTo(X+13,Y);g.moveTo(X,Y-13);g.lineTo(X,Y+13);g.stroke();g.font='bold 12px sans-serif';g.fillText(label,X+14,Y-10);g.restore();pts.push([X,Y,{_z:3,_v4pin:kind,x:p.x,y:p.y,label}])}
+function drawV4Overlay(g,tx,ty){
+ if(routeData?.stops?.length){g.save();g.strokeStyle='#57d9ff';g.lineWidth=3;g.setLineDash([7,5]);g.beginPath();const st=routeData.start;g.moveTo(tx(st.x),ty(st.y));for(const s of routeData.stops)g.lineTo(tx(s.x),ty(s.y));g.stroke();g.setLineDash([]);for(const s of routeData.stops){const X=tx(s.x),Y=ty(s.y);g.fillStyle='#57d9ff';g.beginPath();g.arc(X,Y,10,0,7);g.fill();g.fillStyle='#071014';g.font='bold 11px sans-serif';g.textAlign='center';g.fillText(s.order,X,Y+4);pts.push([X,Y,{_z:3,_v4route:1,...s}])}g.restore()}
+ drawPin(g,tx,ty,exactPlayer(),'#57d9ff','你在這裡（存檔）','exact');drawPin(g,tx,ty,reservePin(),'#ffb84d','我的位置（手動）','manual');
+}
+const oldZoneTip=zoneTip;zoneTip=function(a){if(a._v4pin)return `<b>${esc(a.label)}</b><br>X ${fmt(a.x,0)} / Y ${fmt(a.y,0)}<br>${a._v4pin==='manual'?'只存在瀏覽器，不寫回存檔':'存檔最後寫入位置'}`;if(a._v4route)return `<b>第 ${a.order} 站 · ${esc(a.species)} ${esc(a.species_zh)}</b><br>${esc(a.area||'')} · ${esc(a.point_kind)}<br>本段 ${fmt(a.leg_m,0)} m · 累積 ${fmt(a.cumulative_m,0)} m<br>Fitness ${pct(a.fitness)} · ID ${esc(a.id)}`;return oldZoneTip(a)};
+
+async function buildRoute(){
+ if(!cur||!S)return;let start=$('#routestart').value,params=new URLSearchParams({path:cur,species:$('#routesp').value,habitat:$('#routehab').value,activity:$('#routeact').value,limit:$('#routelimit').value||12,max_fitness:String((+$('#routemax').value||0)/100),mature:$('#routemature').checked?'1':'0',exclude_rare:$('#routerare').checked?'1':'0'});
+ const pin=reservePin();if(start==='manual'){if(!pin){$('#routestatus').innerHTML='<b class="warn">請先到「地圖」點選手動位置。</b>';return}params.set('x',pin.x);params.set('y',pin.y)}
+ if(start==='player'&&!exactPlayer()){if(pin){start='manual';params.set('x',pin.x);params.set('y',pin.y)}else start='center'}params.set('start',start);
+ $('#routestatus').textContent='建立路線中…';try{routeData=await api('/api/route?'+params);renderExpedition();drawMap()}catch(e){$('#routestatus').textContent=e.message}
+}
+function renderExpedition(){if(!S)return;renderV4Status();if(!routeData){$('#routestats').innerHTML='';table('#routetable',[],[]);return}const st=routeData.start,kind=routeData.start_mode_requested==='manual'?'手動地圖釘':routeData.start_mode_requested==='player'&&exactPlayer()?'存檔玩家位置':'候選中心';$('#routestatus').innerHTML=`<b>${routeData.stops.length} 站 · 起點：${kind}</b><div class="mut">X ${fmt(st.x,0)} / Y ${fmt(st.y,0)} · ${esc(routeData.caveat)}</div>`;$('#routestats').innerHTML=[['符合候選',routeData.eligible],['路線停靠',routeData.stops.length],['直線總長',routeData.straight_line_km+' km'],['起點',kind]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');table('#routetable',[['順序','order','n',r=>`<span class="routebadge">${r.order}</span>`],['物種','species'],['中文','species_zh'],['Fitness','fitness','n',r=>pct(r.fitness)],['階段','age_stage'],['近似棲地','habitat_zh'],['區域','area'],['獸群','herd_id'],['停靠類型','point_kind'],['動物到需求區','zone_dist_from_animal_m','n',r=>r.zone_dist_from_animal_m==null?'—':fmt(r.zone_dist_from_animal_m,0)+' m'],['本段','leg_m','n',r=>fmt(r.leg_m,0)+' m'],['累積','cumulative_m','n',r=>fmt(r.cumulative_m,0)+' m'],['ID','id','mut']],routeData.stops,r=>{mapFocus=r;$('#tabs a[data-t="map"]').click()})}
+$('#routebuild').onclick=buildRoute;$('#routeexport').onclick=()=>routeData&&downloadJSON('woth-expedition-route.json',{tool:'WOTH Animal Population Scanner',version:info.version,...routeData});
+
+async function loadObservatory(force=false){if(!cur)return;if(observatoryData&&!force){renderObservatory();return}$('#obsnote').textContent='分析全部去重快照…';try{[observatoryData,methodData]=await Promise.all([api('/api/observatory?path='+encodeURIComponent(cur)),methodData?Promise.resolve(methodData):api('/api/methodology')]);renderObservatory()}catch(e){$('#obsnote').textContent=e.message}}
+function renderObservatory(){
+ const o=observatoryData;if(!o)return;$('#obsnote').textContent=`${o.states} 個狀態 · ${o.transition_count} 次變化 · ${o.year_turns} 次推定年度更替`;
+ $('#obsstats').innerHTML=[['去重狀態',o.states],['變化',o.transition_count],['年度更替',o.year_turns],['Cohort 個體',o.cohort_count],['目前存在',o.present],['已消失',o.gone],['解析錯誤',o.error_count]].map(([k,v])=>`<div class="card"><span class="mut">${k}</span><b>${v}</b></div>`).join('');
+ table('#obsscore',[['物種','species'],['中文','species_zh'],['近似棲地','habitat'],['信心','confidence','',r=>`<span class="${r.confidence==='multi-year'?'advice-good':r.confidence==='snapshot-only'?'mut':'warn'}">${esc(r.confidence)}</span>`],['年度','year_turns','n'],['首次平均','first_avg','n',r=>pct(r.first_avg)],['目前平均','last_avg','n',r=>pct(r.last_avg)],['淨變化','net_delta','n',r=>r.net_delta==null?'—':`${r.net_delta>=0?'+':''}${(r.net_delta*100).toFixed(2)} pt`],['消失','removed','n'],['新出現','spawned','n'],['低於平均移除率','removed_below_rate','n',r=>pct(r.removed_below_rate)],['新生公獸平均','spawned_avg','n',r=>pct(r.spawned_avg)],['目前公獸','current_males','n']],o.scorecards);
+ table('#obstrend',[['狀態','state_index','n'],['時間','time','',r=>new Date(r.time*1000).toLocaleString()],['年度索引','year_index','n'],['物種','species'],['近似棲地','habitat'],['公獸','males','n'],['獸群','herds','n'],['平均','average','n',r=>pct(r.average)],['80%+','high80','n'],['<40%','low40','n']],o.trend);
+ renderCohorts();const classes={saved:'存檔值',derived:'推導值',approximation:'近似值',heuristic:'啟發式', 'observed-delta':'觀察差異','planning-aid':'規劃輔助'};$('#methodcards').innerHTML=(methodData?.metrics||[]).map(m=>`<div class="card"><b>${esc(m.label)}</b> <span class="badge">${esc(classes[m.class]||m.class)}</span><div>${esc(m.definition)}</div><div class="mut">${esc(m.limits)}</div></div>`).join('');
+}
+function renderCohorts(){if(!observatoryData)return;const st=$('#obsstatus').value,q=$('#obsq').value.toLowerCase(),rows=observatoryData.cohorts.filter(x=>(!st||x.status===st)&&(!q||`${x.species} ${x.species_zh} ${x.id} ${x.herd_id}`.toLowerCase().includes(q)));table('#obscohort',[['狀態','status','',r=>r.status==='present'?'<span class="advice-good">目前存在</span>':'<span class="mut">已消失</span>'],['物種','species'],['中文','species_zh'],['性別','gender'],['ID','id','mut'],['Cohort','cohort'],['首次看見','first_seen','',r=>new Date(r.first_seen*1000).toLocaleString()],['最後看見','last_seen','',r=>new Date(r.last_seen*1000).toLocaleString()],['觀察','observations','n'],['年齡','age_last','n',r=>`${fmt(r.age_first,0)} → ${fmt(r.age_last,0)}`],['增加','age_gain','n'],['換群','herd_changes','n'],['棲地變更','habitat_changes','n'],['Fitness','fitness_last','n',r=>pct(r.fitness_last)],['稀有','variant_zh'],['獸群','herd_id']],rows,r=>{const a=A().find(a=>a.id===r.id);if(a){$('#fsp').value=a.species;$('#tabs a[data-t="list"]').click();renderList();showDetail(a)}})}
+['#obsstatus','#obsq'].forEach(s=>s&&$(s).addEventListener('input',renderCohorts));$('#obsrefresh').onclick=()=>{observatoryData=null;loadObservatory(true)};$('#obsexport').onclick=()=>observatoryData&&downloadJSON('woth-population-observatory.json',{tool:'WOTH Animal Population Scanner',version:info.version,...observatoryData,methodology:methodData});
+</script>
+<script src="measure.js"></script><script src="glossary.js"></script></body></html>
